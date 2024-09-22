@@ -38,7 +38,6 @@
             android:textColor="@color/roxo_padrao"
             android:textSize="70sp"
             android:textStyle="bold" />
-
     </LinearLayout>
 
     <TextView
@@ -63,12 +62,12 @@
         android:layout_marginEnd="16dp"
         android:background="@color/roxo_padrao"
         android:hint="Nome Completo"
-        android:hintTextColor="@color/branco"
-        android:padding="12dp"
-        android:textColor="@color/branco"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_signup" />
+        android:textColorHint="@color/branco"
+    android:padding="12dp"
+    android:textColor="@color/branco"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/text_signup" />
 
     <EditText
         android:id="@+id/editTextEmail"
@@ -79,12 +78,12 @@
         android:layout_marginEnd="16dp"
         android:background="@color/roxo_padrao"
         android:hint="E-mail"
-        android:hintTextColor="@color/branco"
-        android:padding="12dp"
-        android:textColor="@color/branco"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextFullName" />
+        android:textColorHint="@color/branco"
+    android:padding="12dp"
+    android:textColor="@color/branco"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/editTextFullName" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -95,13 +94,13 @@
         android:layout_marginEnd="16dp"
         android:background="@color/roxo_padrao"
         android:hint="Senha"
-        android:hintTextColor="@color/branco"
-        android:inputType="textPassword"
-        android:padding="12dp"
-        android:textColor="@color/branco"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+        android:textColorHint="@color/branco"
+    android:inputType="textPassword"
+    android:padding="12dp"
+    android:textColor="@color/branco"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
 
     <EditText
         android:id="@+id/editTextConfirmPassword"
@@ -112,13 +111,13 @@
         android:layout_marginEnd="16dp"
         android:background="@color/roxo_padrao"
         android:hint="Confirmar Senha"
-        android:hintTextColor="@color/branco"
-        android:inputType="textPassword"
-        android:padding="12dp"
-        android:textColor="@color/branco"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+        android:textColorHint="@color/branco"
+    android:inputType="textPassword"
+    android:padding="12dp"
+    android:textColor="@color/branco"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
     <Button
         android:id="@+id/buttonSignup"
@@ -188,6 +187,4 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="302dp"
         tools:layout_editor_absoluteY="54dp" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

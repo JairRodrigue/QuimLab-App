@@ -38,8 +38,7 @@
             android:textColor="@color/roxo_padrao"
             android:textSize="70sp"
             android:textStyle="bold"
-            android:shadowColor="@android:color/black"
-            />
+            android:shadowColor="@android:color/black" />
 
         <TextView
             android:id="@+id/text_lab"
@@ -72,14 +71,14 @@
         android:hint="E-mail"
         android:background="@color/roxo_padrao"
         android:textColor="@color/branco"
-        android:hintTextColor="@color/branco"
-        app:layout_constraintTop_toBottomOf="@+id/text_login"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:padding="12dp" />
+        android:textColorHint="@color/branco"
+    app:layout_constraintTop_toBottomOf="@+id/text_login"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginTop="24dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:padding="12dp" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -89,14 +88,14 @@
         android:inputType="textPassword"
         android:background="@color/roxo_padrao"
         android:textColor="@color/branco"
-        android:hintTextColor="@color/branco"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUsername"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:padding="12dp" />
+        android:textColorHint="@color/branco"
+    app:layout_constraintTop_toBottomOf="@+id/editTextUsername"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginTop="16dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:padding="12dp" />
 
     <Button
         android:id="@+id/buttonLogin"
@@ -168,5 +167,4 @@
             android:text="Sobre o QuimLab"
             android:textColor="@color/branco" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
