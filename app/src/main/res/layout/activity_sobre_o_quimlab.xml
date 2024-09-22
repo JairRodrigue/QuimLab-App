@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/preto2"
+    tools:context=".ui.authentication.SobreOQuimLabActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="22dp"
+        android:src="@drawable/logo_sem_fundo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/name_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@id/logo"
+        app:layout_constraintTop_toTopOf="@id/logo">
+
+        <TextView
+            android:id="@+id/text_quim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Quim"
+            android:textAlignment="center"
+            android:textColor="@color/roxo_padrao"
+            android:textSize="70sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Sobre o Aplicativo"
+        android:textAlignment="center"
+        android:textColor="@color/branco"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
+    <TextView
+        android:id="@+id/text_poem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/branco"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_description"
+        android:gravity="center"
+        android:text="(Mudar o texto depois)\n
+        Neste aplicativo você vai encontrar,\n
+        Soluções para o que deseja alcançar.\n
+        Um mundo de saber ao seu dispor,\n
+        Explorando cada dia, um novo amor.\n\nTecnologia e arte em harmonia,\n
+        Transformando a vida, pura alegria.\n
+        Entre na jornada, venha sonhar,\n
+        Com QuimLab, tudo pode brilhar!" />
+
+    <TextView
+        android:id="@+id/login_redirect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="Voltar ao Login"
+        android:textAlignment="center"
+        android:textColor="@color/branco"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_poem" />
+
+    <TextView
+        android:id="@+id/text_lab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lab"
+        android:textAlignment="center"
+        android:textColor="@color/azul_padrao"
+        android:textSize="70sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="302dp"
+        tools:layout_editor_absoluteY="54dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

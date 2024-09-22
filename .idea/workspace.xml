@@ -25,6 +25,11 @@
           <theme>@style/AppTheme</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_sobre_o_quimlab.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_dashboard.xml">
         <config>
           <theme>@style/AppTheme</theme>
@@ -52,8 +57,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a72cf87-93b0-4af1-9546-c3fa44ef6ac4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/teta/quimlab/ui/authentication/EsqueceuSenhaActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_esqueceu_senha.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/teta/quimlab/ui/authentication/SobreOQuimLabActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_sobre_o_quimlab.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
