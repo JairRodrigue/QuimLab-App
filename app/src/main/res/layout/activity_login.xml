@@ -7,62 +7,68 @@
     android:background="@color/preto2"
     tools:context=".ui.authentication.LoginActivity">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="155dp"
-        android:layout_height="155dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/logo_sem_fundo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.241"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+    <Space
+        android:id="@+id/space"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
 
     <LinearLayout
         android:id="@+id/name_container"
+        app:layout_constraintTop_toBottomOf="@id/space"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintStart_toEndOf="@id/logo"
-        app:layout_constraintTop_toTopOf="@id/logo"
-        app:layout_constraintBottom_toBottomOf="@id/logo"
-        android:layout_marginStart="16dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="50dp"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/logo_sem_fundo"
+            app:layout_constraintEnd_toStartOf="@+id/name_container"
+            tools:layout_editor_absoluteY="16dp" />
 
         <TextView
             android:id="@+id/text_quim"
             android:layout_width="wrap_content"
-            android:layout_height="73dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
             android:text="Quim"
             android:textAlignment="center"
             android:textColor="@color/roxo_padrao"
             android:textSize="70sp"
-            android:textStyle="bold"
-            android:shadowColor="@android:color/black" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/text_lab"
-            android:layout_width="120dp"
-            android:layout_height="72dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
             android:text="Lab"
             android:textAlignment="center"
             android:textColor="@color/azul_padrao"
             android:textSize="70sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/text_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:text="Login"
         android:textAlignment="center"
         android:textColor="@color/branco"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo" />
+        app:layout_constraintTop_toBottomOf="@id/name_container" />
 
     <EditText
         android:id="@+id/editTextUsername"
