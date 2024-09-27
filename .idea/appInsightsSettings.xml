@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.teta.quimlab" />
+                  <option name="mobileSdkAppId" value="1:847530528705:android:49c4e9a1be90b04db06940" />
+                  <option name="projectId" value="quimlab-b35f1" />
+                  <option name="projectNumber" value="847530528705" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "847530528705",
+    "project_id": "quimlab-b35f1",
+    "storage_bucket": "quimlab-b35f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847530528705:android:49c4e9a1be90b04db06940",
+        "android_client_info": {
+          "package_name": "com.teta.quimlab"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrwZrMp9OG9Fidu2mvZc8boC4Oz5qlVRM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
