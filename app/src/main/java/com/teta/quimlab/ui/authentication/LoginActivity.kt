@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.teta.quimlab.MainActivity
 import com.teta.quimlab.R
 import com.teta.quimlab.ui.home.HomeFragment
 
@@ -75,9 +76,10 @@ class LoginActivity : AppCompatActivity() {
                     if (usuario != null && !usuario.isEmailVerified)  else {
                         Toast.makeText(this, "Login realizado com sucesso!", Toast.LENGTH_SHORT).show()
                         limparCampos()
-                        val intent = Intent(this, HomeFragment::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
+                        finish()
+
                     }
                 } else {
                     val erro = task.exception?.message

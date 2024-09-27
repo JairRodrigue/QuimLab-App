@@ -77,7 +77,7 @@ class EsqueceuSenhaActivity : AppCompatActivity() {
             erro.contains("There is no user record corresponding to this identifier") -> "Esse e-mail não está cadastrado."
             erro.contains("invalid-email") -> "E-mail inválido."
             erro.contains("user-not-found") -> "Usuário não encontrado."
-            else -> "Erro: ${erro}"
+            else -> "$erro"
         }
     }
 
