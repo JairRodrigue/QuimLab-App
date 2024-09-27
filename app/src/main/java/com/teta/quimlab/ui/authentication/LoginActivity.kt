@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.teta.quimlab.R
+import com.teta.quimlab.ui.home.HomeFragment
 
 class LoginActivity : AppCompatActivity() {
 
@@ -71,13 +72,12 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val usuario = auth.currentUser
-                    if (usuario != null && !usuario.isEmailVerified) {
-                        mostrarMensagemErro("Por favor, verifique seu e-mail antes de fazer login.")
-                        auth.signOut()
-                    } else {
+                    if (usuario != null && !usuario.isEmailVerified)  else {
                         Toast.makeText(this, "Login realizado com sucesso!", Toast.LENGTH_SHORT).show()
                         limparCampos()
-                        // Redirecionar para outra Activity
+                        val intent = Intent(this, HomeFragment::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
                     }
                 } else {
                     val erro = task.exception?.message

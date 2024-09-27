@@ -31,7 +31,7 @@ class EsqueceuSenhaActivity : AppCompatActivity() {
 
         buttonSendEmail.setOnClickListener { enviarEmailParaRecuperacao() }
 
-        
+
         val loginRedirectTextView = findViewById<TextView>(R.id.login_redirect)
         loginRedirectTextView.setOnClickListener {
             finish()

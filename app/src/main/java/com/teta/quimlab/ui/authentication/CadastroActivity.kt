@@ -25,13 +25,11 @@ class CadastroActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-
         editTextFullName = findViewById(R.id.editTextFullName)
         editTextEmail = findViewById(R.id.editTextEmail)
         editTextPassword = findViewById(R.id.editTextPassword)
         editTextConfirmPassword = findViewById(R.id.editTextConfirmPassword)
         buttonSignup = findViewById(R.id.buttonSignup)
-
 
         buttonSignup.setOnClickListener { cadastrarUsuario() }
     }
@@ -41,7 +39,6 @@ class CadastroActivity : AppCompatActivity() {
         val email = editTextEmail.text.toString().trim()
         val senha = editTextPassword.text.toString().trim()
         val confirmarSenha = editTextConfirmPassword.text.toString().trim()
-
 
         if (TextUtils.isEmpty(nome) || TextUtils.isEmpty(email) || TextUtils.isEmpty(senha) || TextUtils.isEmpty(confirmarSenha)) {
             mostrarMensagemErro("Por favor, preencha todos os campos.")
@@ -63,12 +60,19 @@ class CadastroActivity : AppCompatActivity() {
             return
         }
 
-
         auth.createUserWithEmailAndPassword(email, senha)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this, "Cadastro realizado com sucesso! Verifique seu e-mail para ativação.", Toast.LENGTH_SHORT).show()
-                    limparCampos()
+                    // Enviar e-mail de verificação
+                    val usuario = auth.currentUser
+                    usuario?.sendEmailVerification()?.addOnCompleteListener { emailTask ->
+                        if (emailTask.isSuccessful) {
+                            Toast.makeText(this, "Cadastro realizado com sucesso! Verifique seu e-mail para ativação.", Toast.LENGTH_SHORT).show()
+                            limparCampos()
+                        } else {
+                            mostrarMensagemErro("Falha ao enviar e-mail de verificação.")
+                        }
+                    }
                 } else {
                     val erro = task.exception?.message
                     when {
