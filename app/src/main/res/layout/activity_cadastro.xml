@@ -81,7 +81,9 @@
         android:hint="Nome Completo"
         android:padding="12dp"
         android:textColor="@color/branco"
-        android:textColorHint="@color/branco"
+        android:textColorHint="@color/branco_transparente"
+        android:imeOptions="actionDone"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_signup" />
@@ -97,7 +99,9 @@
         android:hint="E-mail"
         android:padding="12dp"
         android:textColor="@color/branco"
-        android:textColorHint="@color/branco"
+        android:textColorHint="@color/branco_transparente"
+        android:imeOptions="actionDone"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextFullName" />
@@ -114,7 +118,7 @@
         android:inputType="textPassword"
         android:padding="12dp"
         android:textColor="@color/branco"
-        android:textColorHint="@color/branco"
+        android:textColorHint="@color/branco_transparente"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
@@ -131,7 +135,7 @@
         android:inputType="textPassword"
         android:padding="12dp"
         android:textColor="@color/branco"
-        android:textColorHint="@color/branco"
+        android:textColorHint="@color/branco_transparente"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />

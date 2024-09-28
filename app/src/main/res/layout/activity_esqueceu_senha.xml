@@ -78,12 +78,14 @@
         android:layout_marginEnd="16dp"
         android:background="@color/roxo_padrao"
         android:hint="E-mail cadastrado"
-        android:textColorHint="@color/branco"
-    android:padding="12dp"
-    android:textColor="@color/branco"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/text_forgot_password" />
+        android:textColor="@color/branco"
+        android:textColorHint="@color/branco_transparente"
+        android:imeOptions="actionDone"
+        android:inputType="textEmailAddress"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_forgot_password" />
 
     <Button
         android:id="@+id/buttonSendEmail"

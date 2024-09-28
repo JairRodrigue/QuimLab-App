@@ -4,6 +4,7 @@
     <color name="azul_padrao">#0073cf</color>
     <color name="preto">#FF000000</color>
     <color name="branco">#FFFFFFFF</color>
+    <color name="branco_transparente">#9DFFFFFF</color>
     <color name="preto2">#0d051c</color>
 
 </resources>
