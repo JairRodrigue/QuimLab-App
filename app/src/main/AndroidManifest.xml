@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -11,12 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="31">
-
+        <activity
+            android:name=".PerfilActivity"
+            android:exported="false"
+            android:label="@string/title_activity_perfil"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -24,10 +30,8 @@
             android:name=".ui.authentication.LoginActivity"
             android:exported="true" />
         <activity android:name=".ui.authentication.CadastroActivity" />
-
         <activity android:name=".ui.authentication.EsqueceuSenhaActivity" />
         <activity android:name=".ui.authentication.SobreOQuimLabActivity" />
-
     </application>
 
 </manifest>
