@@ -15,12 +15,13 @@ import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.teta.quimlab.R
-import com.teta.quimlab.ui.authentication.LoginActivity
 
 class CadastroActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
     private lateinit var editTextFullName: EditText
     private lateinit var editTextEmail: EditText
     private lateinit var editTextPassword: EditText
@@ -36,6 +37,7 @@ class CadastroActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
 
         editTextFullName = findViewById(R.id.editTextFullName)
         editTextEmail = findViewById(R.id.editTextEmail)
@@ -90,10 +92,11 @@ class CadastroActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 hideProgressBar()
                 if (task.isSuccessful) {
-                    // Enviar e-mail de verificação
                     val usuario = auth.currentUser
                     usuario?.sendEmailVerification()?.addOnCompleteListener { emailTask ->
                         if (emailTask.isSuccessful) {
+                            // Salvar dados no Firestore
+                            salvarDadosNoFirestore(nome, email)
                             Toast.makeText(this, "Cadastro realizado com sucesso! Verifique seu e-mail para ativação.", Toast.LENGTH_SHORT).show()
                             limparCampos()
                         } else {
@@ -114,6 +117,19 @@ class CadastroActivity : AppCompatActivity() {
             }
     }
 
+    private fun salvarDadosNoFirestore(nome: String, email: String) {
+        val usuario = Usuario(nome, email)
+        db.collection("usuarios")
+            .document(auth.currentUser!!.uid)
+            .set(usuario)
+            .addOnSuccessListener {
+                // Dados salvos com sucesso
+            }
+            .addOnFailureListener { e ->
+                mostrarMensagemErro("Falha ao salvar dados: ${e.message}")
+            }
+    }
+
     private fun showProgressBar() {
         progressBar.visibility = android.view.View.VISIBLE
         startProgressBarAnimation()
@@ -128,7 +144,7 @@ class CadastroActivity : AppCompatActivity() {
         val colorTo = ContextCompat.getColor(this, R.color.azul_padrao)
 
         val colorAnimation = ValueAnimator.ofObject(ArgbEvaluator(), colorFrom, colorTo)
-        colorAnimation.duration = 2000 // Duração da animação em milissegundos
+        colorAnimation.duration = 2000 
         colorAnimation.repeatCount = ValueAnimator.INFINITE
         colorAnimation.repeatMode = ValueAnimator.REVERSE
 
