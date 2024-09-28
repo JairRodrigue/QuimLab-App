@@ -6,6 +6,7 @@ import android.text.TextUtils
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -21,6 +22,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var editTextEmail: EditText
     private lateinit var editTextPassword: EditText
     private lateinit var buttonLogin: Button
+    private lateinit var loginRedirect: TextView
+    private lateinit var infoSection: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +39,11 @@ class LoginActivity : AppCompatActivity() {
 
         buttonLogin.setOnClickListener { realizarLogin() }
 
+        infoSection = findViewById(R.id.info_section)
+
+        infoSection.setOnClickListener {
+            abrirSobreQuimLab()
+        }
         val createAccountTextView = findViewById<TextView>(R.id.create_account)
         createAccountTextView.setOnClickListener {
             val intent = Intent(this, CadastroActivity::class.java)
@@ -148,5 +156,9 @@ class LoginActivity : AppCompatActivity() {
     private fun limparCampos() {
         editTextEmail.text.clear()
         editTextPassword.text.clear()
+    }
+    private fun abrirSobreQuimLab() {
+        val intent = Intent(this, SobreOQuimLabActivity::class.java)
+        startActivity(intent)
     }
 }

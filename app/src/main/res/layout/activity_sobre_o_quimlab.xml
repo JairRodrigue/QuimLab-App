@@ -7,82 +7,143 @@
     android:background="@color/preto2"
     tools:context=".ui.authentication.SobreOQuimLabActivity">
 
-    <Space
-        android:id="@+id/space"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/name_container"
-        app:layout_constraintTop_toBottomOf="@id/space"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="50dp"
-        tools:ignore="MissingConstraints">
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/logo_sem_fundo"
-            app:layout_constraintEnd_toStartOf="@+id/name_container"
-            tools:layout_editor_absoluteY="16dp" />
-
-        <TextView
-            android:id="@+id/text_quim"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:text="Quim"
-            android:textAlignment="center"
-            android:textColor="@color/roxo_padrao"
-            android:textSize="70sp"
-            android:textStyle="bold" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/text_lab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:text="Lab"
-            android:textAlignment="center"
-            android:textColor="@color/azul_padrao"
-            android:textSize="70sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            <Space
+                android:id="@+id/space"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
 
-    <TextView
-        android:id="@+id/text_description"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Sobre o Aplicativo"
-        android:textAlignment="center"
-        android:textColor="@color/branco"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/name_container" />
+            <LinearLayout
+                android:id="@+id/name_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/text_poem"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:textColor="@color/branco"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_description"
-        android:gravity="center"
-        android:text="(Mudar o texto depois)\n
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/logo_sem_fundo" />
+
+                <TextView
+                    android:id="@+id/text_quim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:text="Quim"
+                    android:textAlignment="center"
+                    android:textColor="@color/roxo_padrao"
+                    android:textSize="70sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_lab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Lab"
+                    android:textAlignment="center"
+                    android:textColor="@color/azul_padrao"
+                    android:textSize="70sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/text_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="Sobre o Aplicativo"
+                android:textColor="@color/branco"
+                android:textSize="34sp" />
+
+            <TextView
+                android:id="@+id/text_poem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:textColor="@color/branco"
+                android:textSize="18sp"
+                android:text="(Mudar o texto depois)\n
+        Neste aplicativo você vai encontrar,\n
+        Soluções para o que deseja alcançar.\n
+        Um mundo de saber ao seu dispor,\n
+        Explorando cada dia, um novo amor.\n
+        \nTecnologia e arte em harmonia,\n
+        Transformando a vida, pura alegria.\n
+        Entre na jornada, venha sonhar,\n
+        Com QuimLab, tudo pode brilhar!\n
+        Neste aplicativo você vai encontrar,\n
+        Soluções para o que deseja alcançar.\n
+        Um mundo de saber ao seu dispor,\n
+        Explorando cada dia, um novo amor.\n
+        \nTecnologia e arte em harmonia,\n
+        Transformando a vida, pura alegria.\n
+        Entre na jornada, venha sonhar,\n
+        Com QuimLab, tudo pode brilhar!\n
+        Neste aplicativo você vai encontrar,\n
+        Soluções para o que deseja alcançar.\n
+        Um mundo de saber ao seu dispor,\n
+        Explorando cada dia, um novo amor.\n
+        \nTecnologia e arte em harmonia,\n
+        Transformando a vida, pura alegria.\n
+        Entre na jornada, venha sonhar,\n
+        Com QuimLab, tudo pode brilhar!\n
+        Neste aplicativo você vai encontrar,\n
+        Soluções para o que deseja alcançar.\n
+        Um mundo de saber ao seu dispor,\n
+        Explorando cada dia, um novo amor.\n
+        \nTecnologia e arte em harmonia,\n
+        Transformando a vida, pura alegria.\n
+        Entre na jornada, venha sonhar,\n
+        Com QuimLab, tudo pode brilhar!\n
+        Neste aplicativo você vai encontrar,\n
+        Soluções para o que deseja alcançar.\n
+        Um mundo de saber ao seu dispor,\n
+        Explorando cada dia, um novo amor.\n
+        \nTecnologia e arte em harmonia,\n
+        Transformando a vida, pura alegria.\n
+        Entre na jornada, venha sonhar,\n
+        Com QuimLab, tudo pode brilhar!\n
+        Neste aplicativo você vai encontrar,\n
+        Soluções para o que deseja alcançar.\n
+        Um mundo de saber ao seu dispor,\n
+        Explorando cada dia, um novo amor.\n
+        \nTecnologia e arte em harmonia,\n
+        Transformando a vida, pura alegria.\n
+        Entre na jornada, venha sonhar,\n
+        Com QuimLab, tudo pode brilhar!\n
+        Neste aplicativo você vai encontrar,\n
+        Soluções para o que deseja alcançar.\n
+        Um mundo de saber ao seu dispor,\n
+        Explorando cada dia, um novo amor.\n
+        \nTecnologia e arte em harmonia,\n
+        Transformando a vida, pura alegria.\n
+        Entre na jornada, venha sonhar,\n
+        Com QuimLab, tudo pode brilhar!\n
+        Neste aplicativo você vai encontrar,\n
+        Soluções para o que deseja alcançar.\n
+        Um mundo de saber ao seu dispor,\n
+        Explorando cada dia, um novo amor.\n
+        \nTecnologia e arte em harmonia,\n
+        Transformando a vida, pura alegria.\n
+        Entre na jornada, venha sonhar,\n
+        Com QuimLab, tudo pode brilhar!\n
         Neste aplicativo você vai encontrar,\n
         Soluções para o que deseja alcançar.\n
         Um mundo de saber ao seu dispor,\n
@@ -92,18 +153,23 @@
         Entre na jornada, venha sonhar,\n
         Com QuimLab, tudo pode brilhar!" />
 
-    <TextView
-        android:id="@+id/login_redirect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:text="Voltar"
-        android:textAlignment="center"
-        android:textColor="@color/branco"
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_poem" />
+            <TextView
+                android:id="@+id/login_redirect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="Voltar"
+                android:textAlignment="center"
+                android:textColor="@color/branco"
+                android:textSize="17sp" />
+
+            <Space
+                android:id="@+id/space2"
+                android:layout_width="match_parent"
+                android:layout_height="60dp" />
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

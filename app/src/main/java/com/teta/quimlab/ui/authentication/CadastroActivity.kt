@@ -1,13 +1,18 @@
 package com.teta.quimlab.ui.authentication
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.teta.quimlab.R
+import com.teta.quimlab.ui.authentication.LoginActivity
 
 class CadastroActivity : AppCompatActivity() {
 
@@ -17,6 +22,8 @@ class CadastroActivity : AppCompatActivity() {
     private lateinit var editTextPassword: EditText
     private lateinit var editTextConfirmPassword: EditText
     private lateinit var buttonSignup: Button
+    private lateinit var loginRedirect: TextView
+    private lateinit var infoSection: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +37,20 @@ class CadastroActivity : AppCompatActivity() {
         editTextPassword = findViewById(R.id.editTextPassword)
         editTextConfirmPassword = findViewById(R.id.editTextConfirmPassword)
         buttonSignup = findViewById(R.id.buttonSignup)
+        loginRedirect = findViewById(R.id.login_redirect)
 
         buttonSignup.setOnClickListener { cadastrarUsuario() }
+
+
+        loginRedirect.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+        infoSection = findViewById(R.id.info_section)
+
+        infoSection.setOnClickListener {
+            abrirSobreQuimLab()
+        }
     }
 
     private fun cadastrarUsuario() {
@@ -100,5 +119,9 @@ class CadastroActivity : AppCompatActivity() {
 
     private fun isEmailValido(email: String): Boolean {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+    private fun abrirSobreQuimLab() {
+        val intent = Intent(this, SobreOQuimLabActivity::class.java)
+        startActivity(intent)
     }
 }

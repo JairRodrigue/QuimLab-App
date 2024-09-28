@@ -1,10 +1,12 @@
 package com.teta.quimlab.ui.authentication
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +18,9 @@ class EsqueceuSenhaActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var editTextEmail: EditText
     private lateinit var buttonSendEmail: Button
+    private lateinit var loginRedirect: TextView
+    private lateinit var infoSection: LinearLayout
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +35,12 @@ class EsqueceuSenhaActivity : AppCompatActivity() {
 
 
         buttonSendEmail.setOnClickListener { enviarEmailParaRecuperacao() }
+        infoSection = findViewById(R.id.info_section)
 
+
+        infoSection.setOnClickListener {
+            abrirSobreQuimLab()
+        }
 
         val loginRedirectTextView = findViewById<TextView>(R.id.login_redirect)
         loginRedirectTextView.setOnClickListener {
@@ -83,5 +93,9 @@ class EsqueceuSenhaActivity : AppCompatActivity() {
 
     private fun limparCampos() {
         editTextEmail.text.clear()
+    }
+    private fun abrirSobreQuimLab() {
+        val intent = Intent(this, SobreOQuimLabActivity::class.java)
+        startActivity(intent)
     }
 }
