@@ -5,11 +5,15 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.ProgressBar
+import android.animation.ArgbEvaluator
+import android.animation.ValueAnimator
+import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.teta.quimlab.R
 import com.teta.quimlab.ui.authentication.LoginActivity
@@ -24,6 +28,7 @@ class CadastroActivity : AppCompatActivity() {
     private lateinit var buttonSignup: Button
     private lateinit var loginRedirect: TextView
     private lateinit var infoSection: LinearLayout
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,16 +43,16 @@ class CadastroActivity : AppCompatActivity() {
         editTextConfirmPassword = findViewById(R.id.editTextConfirmPassword)
         buttonSignup = findViewById(R.id.buttonSignup)
         loginRedirect = findViewById(R.id.login_redirect)
+        progressBar = findViewById(R.id.progressBar)
 
         buttonSignup.setOnClickListener { cadastrarUsuario() }
-
 
         loginRedirect.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
-        infoSection = findViewById(R.id.info_section)
 
+        infoSection = findViewById(R.id.info_section)
         infoSection.setOnClickListener {
             abrirSobreQuimLab()
         }
@@ -79,8 +84,11 @@ class CadastroActivity : AppCompatActivity() {
             return
         }
 
+        showProgressBar()
+
         auth.createUserWithEmailAndPassword(email, senha)
             .addOnCompleteListener(this) { task ->
+                hideProgressBar()
                 if (task.isSuccessful) {
                     // Enviar e-mail de verificação
                     val usuario = auth.currentUser
@@ -106,6 +114,32 @@ class CadastroActivity : AppCompatActivity() {
             }
     }
 
+    private fun showProgressBar() {
+        progressBar.visibility = android.view.View.VISIBLE
+        startProgressBarAnimation()
+    }
+
+    private fun hideProgressBar() {
+        progressBar.visibility = android.view.View.GONE
+    }
+
+    private fun startProgressBarAnimation() {
+        val colorFrom = ContextCompat.getColor(this, R.color.roxo_padrao)
+        val colorTo = ContextCompat.getColor(this, R.color.azul_padrao)
+
+        val colorAnimation = ValueAnimator.ofObject(ArgbEvaluator(), colorFrom, colorTo)
+        colorAnimation.duration = 2000 // Duração da animação em milissegundos
+        colorAnimation.repeatCount = ValueAnimator.INFINITE
+        colorAnimation.repeatMode = ValueAnimator.REVERSE
+
+        colorAnimation.addUpdateListener { animator ->
+            val animatedColor = animator.animatedValue as Int
+            progressBar.indeterminateTintList = ColorStateList.valueOf(animatedColor)
+        }
+
+        colorAnimation.start()
+    }
+
     private fun limparCampos() {
         editTextFullName.text.clear()
         editTextEmail.text.clear()
@@ -120,6 +154,7 @@ class CadastroActivity : AppCompatActivity() {
     private fun isEmailValido(email: String): Boolean {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
+
     private fun abrirSobreQuimLab() {
         val intent = Intent(this, SobreOQuimLabActivity::class.java)
         startActivity(intent)

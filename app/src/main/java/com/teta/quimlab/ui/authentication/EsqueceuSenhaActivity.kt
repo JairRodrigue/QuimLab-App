@@ -9,7 +9,12 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import android.animation.ArgbEvaluator
+import android.animation.ValueAnimator
+import android.content.res.ColorStateList
 import com.google.firebase.auth.FirebaseAuth
 import com.teta.quimlab.R
 
@@ -18,9 +23,8 @@ class EsqueceuSenhaActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var editTextEmail: EditText
     private lateinit var buttonSendEmail: Button
-    private lateinit var loginRedirect: TextView
     private lateinit var infoSection: LinearLayout
-
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,14 +33,12 @@ class EsqueceuSenhaActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-
         editTextEmail = findViewById(R.id.editTextEmail)
         buttonSendEmail = findViewById(R.id.buttonSendEmail)
-
+        progressBar = findViewById(R.id.progressBar) // Certifique-se de que a ProgressBar esteja no seu layout
 
         buttonSendEmail.setOnClickListener { enviarEmailParaRecuperacao() }
         infoSection = findViewById(R.id.info_section)
-
 
         infoSection.setOnClickListener {
             abrirSobreQuimLab()
@@ -46,6 +48,8 @@ class EsqueceuSenhaActivity : AppCompatActivity() {
         loginRedirectTextView.setOnClickListener {
             finish()
         }
+
+        startProgressBarAnimation()
     }
 
     private fun enviarEmailParaRecuperacao() {
@@ -61,8 +65,12 @@ class EsqueceuSenhaActivity : AppCompatActivity() {
             return
         }
 
+        showProgressBar() // Mostra a ProgressBar antes de enviar o e-mail
+
         auth.sendPasswordResetEmail(email)
             .addOnCompleteListener(this) { task ->
+                hideProgressBar() // Esconde a ProgressBar ao finalizar
+
                 if (task.isSuccessful) {
                     Toast.makeText(this, "E-mail de recuperação enviado!", Toast.LENGTH_SHORT).show()
                     limparCampos()
@@ -71,6 +79,31 @@ class EsqueceuSenhaActivity : AppCompatActivity() {
                     mostrarMensagemErro(traduzirErro(erro))
                 }
             }
+    }
+
+    private fun startProgressBarAnimation() {
+        val colorFrom = ContextCompat.getColor(this, R.color.roxo_padrao)
+        val colorTo = ContextCompat.getColor(this, R.color.azul_padrao)
+
+        val colorAnimation = ValueAnimator.ofObject(ArgbEvaluator(), colorFrom, colorTo)
+        colorAnimation.duration = 2000 // Duração da animação
+        colorAnimation.repeatCount = ValueAnimator.INFINITE
+        colorAnimation.repeatMode = ValueAnimator.REVERSE
+
+        colorAnimation.addUpdateListener { animator ->
+            val animatedColor = animator.animatedValue as Int
+            progressBar.indeterminateTintList = ColorStateList.valueOf(animatedColor)
+        }
+
+        colorAnimation.start()
+    }
+
+    private fun showProgressBar() {
+        progressBar.visibility = android.view.View.VISIBLE
+    }
+
+    private fun hideProgressBar() {
+        progressBar.visibility = android.view.View.GONE
     }
 
     private fun isEmailValido(email: String): Boolean {
@@ -94,8 +127,8 @@ class EsqueceuSenhaActivity : AppCompatActivity() {
     private fun limparCampos() {
         editTextEmail.text.clear()
     }
+
     private fun abrirSobreQuimLab() {
-        val intent = Intent(this, SobreOQuimLabActivity::class.java)
-        startActivity(intent)
+        startActivity(Intent(this, SobreOQuimLabActivity::class.java))
     }
 }
