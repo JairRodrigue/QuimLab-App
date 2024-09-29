@@ -11,6 +11,50 @@
         android:orientation="vertical"
         android:layout_marginTop="0dp">
 
+
+        <LinearLayout
+            android:id="@+id/ir_para_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/option_background"
+            android:clickable="true"
+            android:focusable="true">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/user_icon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/user_icon"
+                    android:layout_marginBottom="8dp"/>
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/border_background"/>
+
+            </FrameLayout>
+
+
+            <TextView
+                android:id="@+id/optionToProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ir para Perfil"
+                android:textSize="21sp"
+                android:textColor="@android:color/white"
+
+                android:gravity="center"
+                android:padding="4dp" />
+        </LinearLayout>
+
+
         <TextView
             android:id="@+id/optionSearchPost"
             android:layout_width="match_parent"
@@ -24,18 +68,6 @@
             android:focusable="true"
             android:layout_marginTop="8dp" />
 
-        <TextView
-            android:id="@+id/optionToProfile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ir para Perfil"
-            android:textSize="21sp"
-            android:textColor="@android:color/white"
-            android:padding="16dp"
-            android:background="@drawable/option_background"
-            android:clickable="true"
-            android:focusable="true"
-            android:layout_marginTop="8dp" />
 
         <TextView
             android:id="@+id/optionNotifications1"

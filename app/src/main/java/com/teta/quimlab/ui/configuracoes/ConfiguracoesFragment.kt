@@ -30,7 +30,7 @@ class ConfiguracoesFragment : Fragment() {
     ): View {
         _binding = FragmentConfiguracoesBinding.inflate(inflater, container, false)
 
-        binding.optionToProfile.setOnClickListener {
+        binding.irParaPerfil.setOnClickListener {
             startActivity(Intent(requireActivity(), PerfilActivity::class.java))
         }
 
