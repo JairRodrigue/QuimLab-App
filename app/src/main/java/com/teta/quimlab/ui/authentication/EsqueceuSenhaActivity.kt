@@ -17,6 +17,7 @@ import android.animation.ValueAnimator
 import android.content.res.ColorStateList
 import com.google.firebase.auth.FirebaseAuth
 import com.teta.quimlab.R
+import com.teta.quimlab.SobreOQuimLabActivity
 
 class EsqueceuSenhaActivity : AppCompatActivity() {
 

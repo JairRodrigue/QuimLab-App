@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/preto2"
-    tools:context=".ui.authentication.SobreOQuimLabActivity">
+    tools:context=".SobreOQuimLabActivity">
 
     <ScrollView
         android:layout_width="match_parent"

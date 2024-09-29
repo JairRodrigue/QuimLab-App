@@ -18,6 +18,7 @@ import com.teta.quimlab.R
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
 import android.content.res.ColorStateList
+import com.teta.quimlab.SobreOQuimLabActivity
 
 class LoginActivity : AppCompatActivity() {
 

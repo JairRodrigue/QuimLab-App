@@ -5,4 +5,11 @@
         <item name="fontFamily">@font/agencyb</item>
         <item name="android:textSize">16.5sp</item>
     </style>
+
+
+        <style name="CustomAlertDialog" parent="Theme.AppCompat.Dialog.Alert">
+            <item name="android:background">#0d051c</item>
+            <item name="android:textColorPrimary">#FFFFFF</item>
+        </style>
+
 </resources>

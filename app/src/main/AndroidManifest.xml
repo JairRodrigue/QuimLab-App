@@ -31,7 +31,7 @@
             android:exported="true" />
         <activity android:name=".ui.authentication.CadastroActivity" />
         <activity android:name=".ui.authentication.EsqueceuSenhaActivity" />
-        <activity android:name=".ui.authentication.SobreOQuimLabActivity" />
+        <activity android:name=".SobreOQuimLabActivity" />
     </application>
 
 </manifest>
