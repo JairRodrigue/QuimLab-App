@@ -17,6 +17,7 @@ import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.teta.quimlab.R
+import com.teta.quimlab.Usuario
 
 class CadastroActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.teta.quimlab.ui.authentication
+package com.teta.quimlab
 
 data class Usuario(
     val nome: String,

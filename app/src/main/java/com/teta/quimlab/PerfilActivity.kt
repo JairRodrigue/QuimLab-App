@@ -2,6 +2,7 @@ package com.teta.quimlab
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -26,29 +27,45 @@ class PerfilActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.appBarPerfil.toolbar)
 
+        // Configuração do FloatingActionButton
         binding.appBarPerfil.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null)
                 .setAnchorView(R.id.fab).show()
         }
-        val drawerLayout: DrawerLayout = binding.drawerLayout
-        val navView: NavigationView = binding.navView
+
+        // Inicialização do DrawerLayout e NavigationView
+        val drawerLayout: DrawerLayout = binding.drawerLayout // Certifique-se que o ID está correto
+        val navView: NavigationView = binding.navView // Certifique-se que o ID está correto
         val navController = findNavController(R.id.nav_host_fragment_content_perfil)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
+        // Configuração da AppBarConfiguration com os IDs de destino
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
             ), drawerLayout
         )
+
+        // Configuração da ActionBar com o NavController
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        // Configuração do NavigationView com o NavController
         navView.setupWithNavController(navController)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.perfil, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_back -> {
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
