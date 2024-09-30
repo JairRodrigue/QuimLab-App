@@ -1,5 +1,6 @@
 package com.teta.quimlab.ui.comunidade
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,13 +9,13 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.teta.quimlab.databinding.FragmentComunidadeBinding
+import com.teta.quimlab.CriarPostActivity
 
 class ComunidadeFragment : Fragment() {
 
     private var _binding: FragmentComunidadeBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    // Esta propriedade só é válida entre onCreateView e onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -32,6 +33,13 @@ class ComunidadeFragment : Fragment() {
         dashboardViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
+        // Configurar o clique do FAB para abrir a CriarPostActivity
+        binding.fab.setOnClickListener {
+            val intent = Intent(requireContext(), CriarPostActivity::class.java)
+            startActivity(intent)
+        }
+
         return root
     }
 

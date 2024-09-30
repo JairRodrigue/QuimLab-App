@@ -14,6 +14,8 @@
         app:itemTextColor="@color/branco"
         app:itemIconTint="@color/branco"
         android:background="@color/preto2"
-        app:layout_constraintStart_toStartOf="parent"  />
+        app:itemTextAppearance="@style/CustomNavigationViewText"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

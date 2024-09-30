@@ -12,4 +12,10 @@
             <item name="android:textColorPrimary">#FFFFFF</item>
         </style>
 
+    <style name="CustomNavigationViewText" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/agencyb</item>
+        <item name="android:textColor">@color/branco</item>
+    </style>
+
 </resources>
