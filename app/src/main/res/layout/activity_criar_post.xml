@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,5 +5,94 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CriarPostActivity">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <EditText
+                android:id="@+id/etitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Título"
+                android:background="@drawable/option_background"
+                android:textColorHint="@color/branco_transparente"
+                android:textColor="@color/branco"
+                android:padding="16dp"
+                android:textSize="18sp"
+                android:layout_marginBottom="8dp" /> <!-- Margem inferior para espaçamento -->
+
+            <EditText
+                android:id="@+id/etmensagem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mensagem"
+                android:background="@drawable/option_background"
+                android:textColorHint="@color/branco_transparente"
+                android:textColor="@color/branco"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:minLines="5"
+                android:maxLines="10"
+                android:gravity="top"
+                android:layout_marginBottom="8dp" /> <!-- Margem inferior para espaçamento -->
+
+            <Button
+                android:id="@+id/btnaddVideo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Adicionar Vídeo"
+                android:background="@drawable/option_background"
+                android:textColor="@color/branco"
+                android:padding="16dp"
+                android:layout_marginBottom="8dp"
+            android:drawableStart="@drawable/ic_menu_slideshow" />
+
+            <Button
+                android:id="@+id/btnaddFoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Adicionar Foto"
+                android:background="@drawable/option_background"
+                android:textColor="@color/branco"
+                android:padding="16dp"
+                android:layout_marginBottom="8dp"
+                android:drawableStart="@drawable/ic_menu_gallery" />
+
+            <Button
+                android:id="@+id/btnaddArquivo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Adicionar Arquivo"
+                android:background="@drawable/option_background"
+                android:textColor="@color/branco"
+                android:padding="16dp"
+                android:layout_marginBottom="8dp"
+            android:drawableStart="@drawable/baseline_attach_file_24" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/azul_padrao"
+        app:srcCompat="@drawable/baseline_done_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

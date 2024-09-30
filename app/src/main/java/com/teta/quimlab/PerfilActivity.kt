@@ -1,9 +1,9 @@
 package com.teta.quimlab
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -28,10 +28,9 @@ class PerfilActivity : AppCompatActivity() {
         setSupportActionBar(binding.appBarPerfil.toolbar)
 
         // Configuração do FloatingActionButton
-        binding.appBarPerfil.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .setAnchorView(R.id.fab).show()
+        binding.appBarPerfil.fab.setOnClickListener {
+            val intent = Intent(this, CriarPostActivity::class.java)
+            startActivity(intent)
         }
 
         // Inicialização do DrawerLayout e NavigationView

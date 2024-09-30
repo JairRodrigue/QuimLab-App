@@ -15,7 +15,6 @@ class ComunidadeFragment : Fragment() {
 
     private var _binding: FragmentComunidadeBinding? = null
 
-    // Esta propriedade só é válida entre onCreateView e onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -34,7 +33,7 @@ class ComunidadeFragment : Fragment() {
             textView.text = it
         }
 
-        // Configurar o clique do FAB para abrir a CriarPostActivity
+
         binding.fab.setOnClickListener {
             val intent = Intent(requireContext(), CriarPostActivity::class.java)
             startActivity(intent)
