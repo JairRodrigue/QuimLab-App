@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.teta.quimlab.ui.gallery.GalleryFragment"
+        android:name="com.teta.quimlab.ui.editar_perfil.EditarPerfilFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_editar_perfil" />
 
     <fragment
         android:id="@+id/nav_slideshow"
