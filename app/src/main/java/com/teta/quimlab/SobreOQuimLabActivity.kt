@@ -16,7 +16,6 @@ class SobreOQuimLabActivity : AppCompatActivity() {
         val loginRedirect: TextView = findViewById(R.id.login_redirect)
         loginRedirect.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
             finish()
         }
     }
