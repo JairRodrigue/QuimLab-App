@@ -22,11 +22,41 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp">
+
+                <ImageView
+                    android:id="@+id/user_icon"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/user_icon" />
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/border_background" />
+
+                <ImageView
+                    android:id="@+id/camera_icon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginBottom="-5dp"
+                    android:layout_marginEnd="-5dp"
+                    android:src="@drawable/ic_menu_camera"
+                    android:contentDescription="Alterar foto" />
+            </FrameLayout>
+
             <EditText
                 android:id="@+id/etnome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nome"
+                android:layout_marginTop="22dp"
                 android:background="@drawable/option_background"
                 android:textColorHint="@color/branco_transparente"
                 android:textColor="@color/branco"
@@ -46,18 +76,32 @@
                 android:textSize="16sp"
                 android:layout_marginBottom="8dp" />
 
-            <Button
-                android:id="@+id/btnSalvar"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Salvar"
-                android:background="@drawable/option_background"
-                android:textColor="@color/branco"
-                android:padding="16dp"
-                android:layout_marginBottom="8dp" />
+                android:orientation="horizontal"
+                android:background="@color/roxo_padrao"
+                android:padding="8dp"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="Informação sobre email"
+                    android:src="@drawable/ic_info" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="O email não é visível para outros usuários. Ao mudar o email, você terá que se autenticar novamente."
+                    android:textColor="@color/branco"
+                    android:textSize="17sp"
+                    android:layout_marginStart="8dp" />
+            </LinearLayout>
 
         </LinearLayout>
-
     </ScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
