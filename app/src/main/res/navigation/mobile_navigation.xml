@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.teta.quimlab.ui.home.HomeFragment"
+        android:name="com.teta.quimlab.ui.inicio.InicioFragment"
         android:label="Início"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_inicio" />
 
     <fragment
         android:id="@+id/navigation_dashboard"

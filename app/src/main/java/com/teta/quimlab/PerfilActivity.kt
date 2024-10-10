@@ -4,15 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
 import com.teta.quimlab.databinding.ActivityPerfilBinding
+import androidx.navigation.ui.setupWithNavController
 
 class PerfilActivity : AppCompatActivity() {
 
@@ -21,6 +22,7 @@ class PerfilActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         binding = ActivityPerfilBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -34,14 +36,14 @@ class PerfilActivity : AppCompatActivity() {
         }
 
         // Inicialização do DrawerLayout e NavigationView
-        val drawerLayout: DrawerLayout = binding.drawerLayout // Certifique-se que o ID está correto
-        val navView: NavigationView = binding.navView // Certifique-se que o ID está correto
+        val drawerLayout: DrawerLayout = binding.drawerLayout
+        val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_perfil)
 
         // Configuração da AppBarConfiguration com os IDs de destino
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_home
             ), drawerLayout
         )
 
@@ -50,6 +52,22 @@ class PerfilActivity : AppCompatActivity() {
 
         // Configuração do NavigationView com o NavController
         navView.setupWithNavController(navController)
+
+        // Encontrar e configurar os botões no NavigationView
+        val headerView = navView.getHeaderView(0)
+        val btnVerPerfil = headerView.findViewById<Button>(R.id.btn_perfil)
+        val btnEditarPerfil = headerView.findViewById<Button>(R.id.btn_editar_perfil)
+
+        // Ação para o botão Ver Perfil (apenas fecha a barra lateral)
+        btnVerPerfil.setOnClickListener {
+            drawerLayout.closeDrawers() // Fecha a barra lateral
+        }
+
+        // Ação para o botão Editar Perfil (abre a EditarPerfilActivity)
+        btnEditarPerfil.setOnClickListener {
+            val intent = Intent(this, EditarPerfilActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

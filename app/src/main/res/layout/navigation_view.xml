@@ -10,12 +10,39 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_perfil"
-        app:menu="@menu/activity_main_drawer"
+        android:background="@color/preto2"
         app:itemTextColor="@color/branco"
         app:itemIconTint="@color/branco"
-        android:background="@color/preto2"
         app:itemTextAppearance="@style/CustomNavigationViewText"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
 
+        <Button
+            android:id="@+id/btn_perfil"
+            android:layout_width="match_parent"
+            android:layout_marginTop="255dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/preto2"
+            android:textAllCaps="false"
+            android:drawableStart="@drawable/baseline_person_24"
+            android:textSize="16dp"
+            android:drawablePadding="-20dp"
+            android:text="Ver Perfil"
+            android:textColor="@color/branco" />
+
+        <Button
+            android:id="@+id/btn_editar_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="305dp"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/preto2"
+            android:drawableStart="@drawable/baseline_mode_24"
+            android:drawablePadding="-20dp"
+            android:textSize="16dp"
+            android:text="Editar Perfil"
+            android:textColor="@color/branco" />
+
+
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
