@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.teta.quimlab.PerfilActivity
 import com.teta.quimlab.R
+import com.teta.quimlab.SobreOQuimLabActivity  // Import your new activity here
 import com.teta.quimlab.databinding.FragmentConfiguracoesBinding
 import com.teta.quimlab.ui.authentication.LoginActivity
 
@@ -40,6 +41,10 @@ class ConfiguracoesFragment : Fragment() {
 
         binding.redefinirSenha.setOnClickListener {
             showPasswordResetDialog()
+        }
+
+        binding.optionAbout.setOnClickListener {  // Add this listener
+            startActivity(Intent(requireActivity(), SobreOQuimLabActivity::class.java))
         }
 
         return binding.root
