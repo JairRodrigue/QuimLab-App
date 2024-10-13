@@ -17,6 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
+            android:id="@+id/container_principal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -85,7 +86,7 @@
                 android:layout_marginBottom="16dp">
 
                 <ImageView
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:contentDescription="Informação sobre email"
@@ -95,7 +96,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="O email não é visível para outros usuários. Ao mudar o email, você terá que se autenticar novamente."
+                    android:text="O email é visível para outros usuários (Caso não permita, deixe o campo de email vazio). Esse email é apenas do perfil, o email da autenticação deve ser alterado nas configurações."
                     android:textColor="@color/branco"
                     android:textSize="17sp"
                     android:layout_marginStart="8dp" />

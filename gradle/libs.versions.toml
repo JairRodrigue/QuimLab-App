@@ -1,6 +1,11 @@
 [versions]
 agp = "8.7.0"
+androidImageCropper = "4.4.0"
+androidImageCropperVersion = "4.0.0"
+compiler = "4.13.2"
 firebaseBom = "33.3.0"
+glide = "4.13.2"
+imageCropper = "4.0.0"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -20,12 +25,18 @@ firebaseDatabaseKtx = "21.0.0"
 lifecycleRuntimeKtx = "2.6.1"
 activityCompose = "1.8.0"
 composeBom = "2024.04.01"
+firebaseStorageKtx = "21.0.1"
 
 [libraries]
+android-image-cropper = { module = "com.canhub.cropper:android-image-cropper", version.ref = "androidImageCropper" }
+android-image-cropper-v400 = { module = "com.canhub.cropper:android-image-cropper", version.ref = "androidImageCropperVersion" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "compiler" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 google-firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+image-cropper = { module = "com.canhub.cropper:image-cropper", version.ref = "imageCropper" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -50,6 +61,7 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+firebase-storage-ktx = { group = "com.google.firebase", name = "firebase-storage-ktx", version.ref = "firebaseStorageKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

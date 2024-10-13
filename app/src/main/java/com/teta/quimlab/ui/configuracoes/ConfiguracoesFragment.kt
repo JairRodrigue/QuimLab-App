@@ -7,15 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.teta.quimlab.PerfilActivity
 import com.teta.quimlab.R
-import com.teta.quimlab.SobreOQuimLabActivity  // Import your new activity here
+import com.teta.quimlab.SobreOQuimLabActivity
 import com.teta.quimlab.databinding.FragmentConfiguracoesBinding
 import com.teta.quimlab.ui.authentication.LoginActivity
 
@@ -23,6 +26,8 @@ class ConfiguracoesFragment : Fragment() {
 
     private var _binding: FragmentConfiguracoesBinding? = null
     private val binding get() = _binding!!
+    private val firebaseAuth = FirebaseAuth.getInstance()
+    private val firestore = FirebaseFirestore.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,6 +35,9 @@ class ConfiguracoesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentConfiguracoesBinding.inflate(inflater, container, false)
+
+        // Carregar imagem do usuário
+        loadUserImage()
 
         binding.irParaPerfil.setOnClickListener {
             startActivity(Intent(requireActivity(), PerfilActivity::class.java))
@@ -43,14 +51,34 @@ class ConfiguracoesFragment : Fragment() {
             showPasswordResetDialog()
         }
 
-        binding.optionAbout.setOnClickListener {  // Add this listener
+        binding.optionAbout.setOnClickListener {
             startActivity(Intent(requireActivity(), SobreOQuimLabActivity::class.java))
         }
 
         return binding.root
     }
 
-    // Função para mostrar o diálogo de confirmação de logout
+    private fun loadUserImage() {
+        val userId = firebaseAuth.currentUser?.uid
+        if (userId != null) {
+            firestore.collection("usuarios").document(userId).get()
+                .addOnSuccessListener { document ->
+                    if (document != null && document.contains("imageUrl")) {
+                        val imageUrl = document.getString("imageUrl")
+                        val userIcon = binding.root.findViewById<ImageView>(R.id.user_icon)
+                        Glide.with(this)
+                            .load(imageUrl)
+                            .placeholder(R.drawable.user_icon) // Ícone padrão enquanto carrega
+                            .error(R.drawable.user_icon) // Ícone padrão se houver erro
+                            .into(userIcon)
+                    }
+                }
+                .addOnFailureListener {
+                    Toast.makeText(requireContext(), "Erro ao carregar a imagem do perfil", Toast.LENGTH_SHORT).show()
+                }
+        }
+    }
+
     private fun showLogoutConfirmationDialog() {
         val builder = AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
 
@@ -62,30 +90,31 @@ class ConfiguracoesFragment : Fragment() {
         val dialog = builder.create()
 
         dialog.setOnShowListener {
-            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(requireContext(), R.color.roxo_padrao))
-            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(requireContext(), R.color.branco))
-            dialog.findViewById<TextView>(android.R.id.message)?.setTextColor(ContextCompat.getColor(requireContext(), R.color.branco))
-            dialog.findViewById<TextView>(resources.getIdentifier("alertTitle", "id", requireContext().packageName))?.setTextColor(ContextCompat.getColor(requireContext(), R.color.branco))
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.roxo_padrao))
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.branco))
+            dialog.findViewById<TextView>(android.R.id.message)
+                ?.setTextColor(ContextCompat.getColor(requireContext(), R.color.branco))
+            dialog.findViewById<TextView>(resources.getIdentifier("alertTitle", "id", requireContext().packageName))
+                ?.setTextColor(ContextCompat.getColor(requireContext(), R.color.branco))
         }
 
         dialog.show()
     }
 
-    // Função para realizar o logout
     private fun performLogout() {
-        FirebaseAuth.getInstance().signOut()
+        firebaseAuth.signOut()
         startActivity(Intent(requireActivity(), LoginActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         })
         requireActivity().finish()
     }
 
-    // Função para mostrar o diálogo de redefinição de senha
     private fun showPasswordResetDialog() {
         val builder = AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
         builder.setTitle("Redefinir Senha")
 
-        // Criação do campo de input para o e-mail
         val input = EditText(requireContext()).apply {
             hint = "Digite seu e-mail"
             setTextColor(ContextCompat.getColor(requireContext(), R.color.branco))
@@ -93,7 +122,6 @@ class ConfiguracoesFragment : Fragment() {
         }
         builder.setView(input)
 
-        // Configuração dos botões
         builder.setPositiveButton("Enviar") { _: DialogInterface, _: Int ->
             val email = input.text.toString()
             if (email.isNotEmpty()) {
@@ -108,10 +136,11 @@ class ConfiguracoesFragment : Fragment() {
 
         val dialog = builder.create()
 
-        // Customizando o estilo da caixa de diálogo
         dialog.setOnShowListener {
-            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(requireContext(), R.color.roxo_padrao))
-            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(requireContext(), R.color.branco))
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.roxo_padrao))
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.branco))
             input.setTextColor(ContextCompat.getColor(requireContext(), R.color.branco))
             input.setHintTextColor(ContextCompat.getColor(requireContext(), R.color.branco_transparente))
             dialog.window?.setBackgroundDrawableResource(R.color.preto3)
@@ -120,9 +149,8 @@ class ConfiguracoesFragment : Fragment() {
         dialog.show()
     }
 
-    // Função para enviar o e-mail de redefinição de senha
     private fun sendPasswordResetEmail(email: String) {
-        FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+        firebaseAuth.sendPasswordResetEmail(email)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(requireContext(), "E-mail de redefinição enviado!", Toast.LENGTH_SHORT).show()
