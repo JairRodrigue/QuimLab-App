@@ -15,7 +15,6 @@
         android:background="@drawable/posts_backgroud"
         android:clickable="true"
         android:focusable="true"
-        android:gravity="center"
         android:orientation="vertical">
 
         <LinearLayout
@@ -58,7 +57,6 @@
             android:id="@+id/mensagemTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:textColor="@color/branco"
             android:textSize="18sp" />
 
@@ -84,8 +82,11 @@
             android:id="@+id/arquivoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="16dp"
             android:textColor="@color/branco"
-            android:visibility="gone" />
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:background="@color/roxo_padrao"/>
 
         <!-- Botões de Like e Comentários -->
         <LinearLayout
