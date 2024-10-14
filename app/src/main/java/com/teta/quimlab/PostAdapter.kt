@@ -5,6 +5,7 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
@@ -30,6 +31,12 @@ class PostAdapter : ListAdapter<Postagem, PostAdapter.PostViewHolder>(DiffCallba
         private val mensagemTextView: TextView = itemView.findViewById(R.id.mensagemTextView)
         private val imagemView: ImageView = itemView.findViewById(R.id.imagemView)
         private val arquivoTextView: TextView = itemView.findViewById(R.id.arquivoTextView)
+        private val btnLike: ImageButton = itemView.findViewById(R.id.btn_like)
+        private val likeCountTextView: TextView = itemView.findViewById(R.id.like_count)
+        private val btnComentario: ImageButton = itemView.findViewById(R.id.btn_comentario)
+
+        private var likeCount = 0
+        private var isLiked = false
 
         fun bind(postagem: Postagem) {
             tituloTextView.text = postagem.titulo
@@ -77,9 +84,29 @@ class PostAdapter : ListAdapter<Postagem, PostAdapter.PostViewHolder>(DiffCallba
             } else {
                 arquivoTextView.visibility = View.GONE
             }
+
+            // Configuração do botão de like
+            likeCountTextView.text = likeCount.toString() // Inicializa o contador de likes
+            btnLike.setOnClickListener {
+                if (!isLiked) {
+                    likeCount++ // Incrementa o contador de likes
+                    likeCountTextView.text = likeCount.toString() // Atualiza o texto com o novo número de likes
+                    btnLike.setImageResource(R.drawable.like) // Muda o ícone para "like"
+                    isLiked = true // Atualiza o estado para "curtido"
+                } else {
+                    likeCount-- // Decrementa o contador de likes
+                    likeCountTextView.text = likeCount.toString() // Atualiza o texto com o novo número de likes
+                    btnLike.setImageResource(R.drawable.like_nc) // Muda o ícone para "like_nc"
+                    isLiked = false // Atualiza o estado para "não curtido"
+                }
+            }
+
+            // A lógica para o botão de comentários pode ser adicionada aqui, se necessário
+            btnComentario.setOnClickListener {
+                // Ação a ser tomada quando o botão de comentário for clicado
+            }
         }
     }
-
 
     class DiffCallback : DiffUtil.ItemCallback<Postagem>() {
         override fun areItemsTheSame(oldItem: Postagem, newItem: Postagem): Boolean {
