@@ -17,6 +17,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.util.*
@@ -122,26 +124,50 @@ class CriarPostActivity : AppCompatActivity() {
         val titulo = etTitulo.text.toString()
         val mensagem = etMensagem.text.toString()
 
-        // Verifica se os campos não estão vazios
-        if (titulo.isNotEmpty() && mensagem.isNotEmpty()) {
-            val postagem = hashMapOf(
-                "titulo" to titulo,
-                "mensagem" to mensagem
-            )
+        // Obtém o usuário autenticado
+        val usuarioAtual = FirebaseAuth.getInstance().currentUser
 
-            // Adiciona os dados ao Firestore
-            firestore.collection("postagens")
-                .add(postagem)
-                .addOnSuccessListener { documentReference ->
-                    uploadArquivos(documentReference.id) // Passa o ID da postagem
+        // Verifica se os campos e os dados do usuário não estão vazios
+        if (titulo.isNotEmpty() && mensagem.isNotEmpty() && usuarioAtual != null) {
+            // Recupera o nome de usuário e foto de perfil do Firestore usando o UID do usuário
+            val uid = usuarioAtual.uid
+            firestore.collection("usuarios").document(uid).get()
+                .addOnSuccessListener { document ->
+                    if (document != null && document.exists()) {
+                        val nomeUsuario = document.getString("nome") ?: "Usuário desconhecido"
+                        val fotoPerfilUrl = document.getString("imageUrl") ?: ""
+
+                        // Cria o objeto da postagem com os dados do usuário
+                        val postagem = hashMapOf(
+                            "titulo" to titulo,
+                            "mensagem" to mensagem,
+                            "nomeUsuario" to nomeUsuario,
+                            "fotoPerfilUrl" to fotoPerfilUrl,
+                            "usuarioId" to uid,
+                            "timestamp" to FieldValue.serverTimestamp()
+                        )
+
+                        // Adiciona os dados ao Firestore
+                        firestore.collection("postagens")
+                            .add(postagem)
+                            .addOnSuccessListener { documentReference ->
+                                uploadArquivos(documentReference.id) // Passa o ID da postagem
+                            }
+                            .addOnFailureListener { e ->
+                                Toast.makeText(this, "Erro ao criar postagem: ${e.message}", Toast.LENGTH_SHORT).show()
+                            }
+                    } else {
+                        Toast.makeText(this, "Erro ao recuperar informações do usuário.", Toast.LENGTH_SHORT).show()
+                    }
                 }
                 .addOnFailureListener { e ->
-                    Toast.makeText(this, "Erro ao criar postagem: ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Erro ao acessar dados do usuário: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
         } else {
-            Toast.makeText(this, "Título e mensagem são obrigatórios.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Título, mensagem e dados do usuário são obrigatórios.", Toast.LENGTH_SHORT).show()
         }
     }
+
 
     private fun uploadArquivos(postId: String) {
         val uploadTasks = mutableListOf<Task<*>>()
