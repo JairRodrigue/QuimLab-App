@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +20,13 @@
 
         <activity
             android:name=".CriarPostActivity"
-            android:exported="false" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".PerfilPublicoActivity"
             android:exported="true" />
@@ -40,7 +49,6 @@
         <activity android:name=".ui.authentication.CadastroActivity" />
         <activity android:name=".ui.authentication.EsqueceuSenhaActivity" />
         <activity android:name=".SobreOQuimLabActivity" />
-
         <activity
             android:name=".EditarPerfilActivity"
             android:exported="false" />
