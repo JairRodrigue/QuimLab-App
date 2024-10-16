@@ -1,6 +1,7 @@
 package com.teta.quimlab
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.teta.quimlab.databinding.ActivityPerfilPublicoBinding
 
@@ -15,6 +16,9 @@ class PerfilPublicoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPerfilPublicoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        supportActionBar?.title = ""
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // Captura os dados da Intent
         usuarioId = intent.getStringExtra("usuarioId") ?: ""
@@ -31,5 +35,14 @@ class PerfilPublicoActivity : AppCompatActivity() {
 
     private fun carregarPostsDoUsuario(usuarioId: String) {
         // Implementar a lógica para carregar os posts do usuário do Firestore e exibi-los na UI
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
