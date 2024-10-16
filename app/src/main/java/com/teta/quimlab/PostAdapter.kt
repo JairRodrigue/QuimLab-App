@@ -1,21 +1,26 @@
 package com.teta.quimlab
 
 import android.content.Context
-import android.content.Intent // Importação necessária
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 
 class PostAdapter(private val context: Context, private var postagens: List<Map<String, Any>>) :
     RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
     private val firestore = FirebaseFirestore.getInstance()
+    private val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_postagem, parent, false)
@@ -31,7 +36,6 @@ class PostAdapter(private val context: Context, private var postagens: List<Map<
         return postagens.size
     }
 
-    // Método para atualizar a lista de postagens e notificar o RecyclerView sobre as mudanças
     fun updatePostagens(novasPostagens: List<Map<String, Any>>) {
         this.postagens = novasPostagens
         notifyDataSetChanged()
@@ -42,18 +46,69 @@ class PostAdapter(private val context: Context, private var postagens: List<Map<
         private val fotoPerfilImageView: ImageView = itemView.findViewById(R.id.foto_perfil)
         private val tituloTextView: TextView = itemView.findViewById(R.id.tituloTextView)
         private val mensagemTextView: TextView = itemView.findViewById(R.id.mensagemTextView)
+        private val imagemView: ImageView = itemView.findViewById(R.id.imagemView)
+        private val arquivoTextView: TextView = itemView.findViewById(R.id.arquivoTextView)
+        private val btnLike: ImageButton = itemView.findViewById(R.id.btn_like)
+        private val likeCountTextView: TextView = itemView.findViewById(R.id.like_count)
+        private val btnComentario: ImageButton = itemView.findViewById(R.id.btn_comentario)
         private val entrarPerfilLayout: View = itemView.findViewById(R.id.entrar_perfil)
+
+        private var likeCount = 0
+        private var isLiked = false
+        private var postId: String? = null
 
         fun bind(postagem: Map<String, Any>) {
             val titulo = postagem["titulo"] as? String ?: "Sem título"
             val mensagem = postagem["mensagem"] as? String ?: "Sem mensagem"
             val usuarioId = postagem["usuarioId"] as? String
+            val fotoUrl = postagem["fotoUrl"] as? String
+            val videoUrl = postagem["videoUrl"] as? String
+            val arquivoUrl = postagem["arquivoUrl"] as? String
             val emailUsuario = postagem["email"] as? String ?: "Email desconhecido"
+            postId = postagem["postId"] as? String
 
             tituloTextView.text = titulo
             mensagemTextView.text = mensagem
 
-            // Busca os dados do usuário diretamente do Firestore
+            carregarStatusCurtida()
+
+            if (!fotoUrl.isNullOrEmpty()) {
+                imagemView.visibility = View.VISIBLE
+                Glide.with(context).load(fotoUrl).into(imagemView)
+                imagemView.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW).setDataAndType(Uri.parse(fotoUrl), "image/*")
+                    context.startActivity(intent)
+                }
+            } else if (!videoUrl.isNullOrEmpty()) {
+                imagemView.visibility = View.VISIBLE
+                Glide.with(context).load(videoUrl).into(imagemView)
+                imagemView.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl)).setDataAndType(Uri.parse(videoUrl), "video/*")
+                    context.startActivity(intent)
+                }
+            } else {
+                imagemView.visibility = View.GONE
+            }
+
+            if (!arquivoUrl.isNullOrEmpty()) {
+                arquivoTextView.visibility = View.VISIBLE
+                arquivoTextView.text = "Arquivo disponível: clique para abrir"
+                arquivoTextView.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(arquivoUrl))
+                    context.startActivity(intent)
+                }
+            } else {
+                arquivoTextView.visibility = View.GONE
+            }
+
+            btnLike.setOnClickListener {
+                if (isLiked) {
+                    descurtirPostagem()
+                } else {
+                    curtirPostagem()
+                }
+            }
+
             if (usuarioId != null) {
                 carregarDadosDoUsuario(usuarioId)
             } else {
@@ -61,7 +116,6 @@ class PostAdapter(private val context: Context, private var postagens: List<Map<
                 fotoPerfilImageView.setImageResource(R.drawable.user_icon)
             }
 
-            // Adiciona o click listener
             entrarPerfilLayout.setOnClickListener {
                 val intent = Intent(context, PerfilPublicoActivity::class.java).apply {
                     putExtra("usuarioId", usuarioId)
@@ -69,6 +123,70 @@ class PostAdapter(private val context: Context, private var postagens: List<Map<
                     putExtra("emailUsuario", emailUsuario)
                 }
                 context.startActivity(intent)
+            }
+        }
+
+        private fun carregarStatusCurtida() {
+            postId?.let { id ->
+                firestore.collection("posts").document(id).get()
+                    .addOnSuccessListener { document ->
+                        if (document.exists()) {
+                            val curtidas = document.getLong("curtidas") ?: 0
+                            val usuariosQueCurtiram = document.get("usuariosQueCurtiram") as? List<String> ?: emptyList()
+                            likeCount = curtidas.toInt()
+                            isLiked = currentUserId in usuariosQueCurtiram
+
+                            likeCountTextView.text = likeCount.toString()
+                            btnLike.setImageResource(if (isLiked) R.drawable.like else R.drawable.like_nc)
+                        }
+                    }
+                    .addOnFailureListener { exception ->
+                        Log.e("PostAdapter", "Erro ao carregar curtidas: ", exception)
+                    }
+            }
+        }
+
+        private fun curtirPostagem() {
+            postId?.let { id ->
+                firestore.collection("posts").document(id)
+                    .update(
+                        "curtidas", FieldValue.increment(1),
+                        "usuariosQueCurtiram", FieldValue.arrayUnion(currentUserId)
+                    )
+                    .addOnSuccessListener {
+                        Log.d("PostAdapter", "Postagem curtida com sucesso!")
+                        likeCount++
+                        likeCountTextView.text = likeCount.toString()
+                        btnLike.setImageResource(R.drawable.like)
+                        isLiked = true
+                    }
+                    .addOnFailureListener { exception ->
+                        Log.e("PostAdapter", "Erro ao curtir postagem: ", exception)
+                    }
+            } ?: run {
+                Log.e("PostAdapter", "postId é nulo, não foi possível curtir a postagem")
+            }
+        }
+
+        private fun descurtirPostagem() {
+            postId?.let { id ->
+                firestore.collection("posts").document(id)
+                    .update(
+                        "curtidas", FieldValue.increment(-1),
+                        "usuariosQueCurtiram", FieldValue.arrayRemove(currentUserId)
+                    )
+                    .addOnSuccessListener {
+                        Log.d("PostAdapter", "Curtida removida com sucesso!")
+                        likeCount--
+                        likeCountTextView.text = likeCount.toString()
+                        btnLike.setImageResource(R.drawable.like_nc)
+                        isLiked = false
+                    }
+                    .addOnFailureListener { exception ->
+                        Log.e("PostAdapter", "Erro ao remover curtida: ", exception)
+                    }
+            } ?: run {
+                Log.e("PostAdapter", "postId é nulo, não foi possível remover a curtida")
             }
         }
 
@@ -95,11 +213,7 @@ class PostAdapter(private val context: Context, private var postagens: List<Map<
 
         private fun carregarImagemDePerfil(fotoPerfilUrl: String?) {
             if (!fotoPerfilUrl.isNullOrEmpty()) {
-                Glide.with(context)
-                    .load(fotoPerfilUrl)
-                    .placeholder(R.drawable.user_icon)
-                    .error(R.drawable.user_icon)
-                    .into(fotoPerfilImageView)
+                Glide.with(context).load(fotoPerfilUrl).placeholder(R.drawable.user_icon).error(R.drawable.user_icon).into(fotoPerfilImageView)
             } else {
                 fotoPerfilImageView.setImageResource(R.drawable.user_icon)
             }
