@@ -6,5 +6,9 @@ data class Postagem(
     val mensagem: String = "",
     val fotoUrl: String? = null,
     val videoUrl: String? = null,
-    val arquivoUrl: String? = null
+    val arquivoUrl: String? = null,
+    var likeCount: Int = 0,
+    val usuarioId: String = "",
+    val fotoPerfilUrl: String? = null,
+    val nomeUsuario: String = ""
 )

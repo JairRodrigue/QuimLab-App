@@ -7,12 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.teta.quimlab.CriarPostActivity
 import com.teta.quimlab.PostAdapter
-import com.teta.quimlab.Postagem
 import com.teta.quimlab.databinding.FragmentComunidadeBinding
 
 class ComunidadeFragment : Fragment() {
@@ -32,7 +30,9 @@ class ComunidadeFragment : Fragment() {
 
         // Configuração do RecyclerView e Adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        postAdapter = PostAdapter()
+
+        // Inicializando o PostAdapter com um contexto e uma lista vazia
+        postAdapter = PostAdapter(requireContext(), emptyList())
         binding.recyclerView.adapter = postAdapter
 
         // Carregar postagens do Firestore
@@ -49,24 +49,29 @@ class ComunidadeFragment : Fragment() {
 
     private fun carregarPostagens() {
         firestore.collection("postagens")
+            .orderBy("timestamp")
             .get()
             .addOnSuccessListener { documents ->
                 val postagens = documents.map { document ->
-                    Postagem(
-                        id = document.id, // Atribuindo o ID do documento à postagem
-                        titulo = document.getString("titulo") ?: "",
-                        mensagem = document.getString("mensagem") ?: "",
-                        fotoUrl = document.getString("fotoUrl"),
-                        videoUrl = document.getString("videoUrl"),
-                        arquivoUrl = document.getString("arquivoUrl")
+                    mapOf<String, Any>(
+                        "id" to document.id,
+                        "titulo" to (document.getString("titulo") ?: ""),
+                        "mensagem" to (document.getString("mensagem") ?: ""),
+                        "fotoUrl" to (document.getString("fotoUrl") ?: ""),
+                        "videoUrl" to (document.getString("videoUrl") ?: ""),
+                        "arquivoUrl" to (document.getString("arquivoUrl") ?: ""),
+                        "nomeUsuario" to (document.getString("nomeUsuario") ?: "Usuário desconhecido"),
+                        "fotoPerfilUrl" to (document.getString("fotoPerfilUrl") ?: ""),
+                        "usuarioId" to (document.getString("usuarioId") ?: "")
                     )
                 }
-                postAdapter.submitList(postagens)
+                postAdapter.updatePostagens(postagens)
             }
             .addOnFailureListener { exception ->
                 Toast.makeText(requireContext(), "Erro ao carregar postagens: ${exception.message}", Toast.LENGTH_SHORT).show()
             }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -66,11 +66,19 @@ class CriarPostActivity : AppCompatActivity() {
         }
 
         btnAdicionarVideo.setOnClickListener {
-            escolherVideo()
+            if (fotoUri != null) {
+                Toast.makeText(this, "Você não pode selecionar um vídeo e uma foto ao mesmo tempo.", Toast.LENGTH_SHORT).show()
+            } else {
+                escolherVideo()
+            }
         }
 
         btnAdicionarFoto.setOnClickListener {
-            escolherFoto()
+            if (videoUri != null) {
+                Toast.makeText(this, "Você não pode selecionar uma foto e um vídeo ao mesmo tempo.", Toast.LENGTH_SHORT).show()
+            } else {
+                escolherFoto()
+            }
         }
 
         btnAdicionarArquivo.setOnClickListener {
@@ -124,12 +132,16 @@ class CriarPostActivity : AppCompatActivity() {
         val titulo = etTitulo.text.toString()
         val mensagem = etMensagem.text.toString()
 
+        // Verifica se os campos obrigatórios estão preenchidos
+        if (titulo.isEmpty() || mensagem.isEmpty()) {
+            Toast.makeText(this, "Título e mensagem são obrigatórios.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         // Obtém o usuário autenticado
         val usuarioAtual = FirebaseAuth.getInstance().currentUser
 
-        // Verifica se os campos e os dados do usuário não estão vazios
-        if (titulo.isNotEmpty() && mensagem.isNotEmpty() && usuarioAtual != null) {
-            // Recupera o nome de usuário e foto de perfil do Firestore usando o UID do usuário
+        if (usuarioAtual != null) {
             val uid = usuarioAtual.uid
             firestore.collection("usuarios").document(uid).get()
                 .addOnSuccessListener { document ->
@@ -137,7 +149,6 @@ class CriarPostActivity : AppCompatActivity() {
                         val nomeUsuario = document.getString("nome") ?: "Usuário desconhecido"
                         val fotoPerfilUrl = document.getString("imageUrl") ?: ""
 
-                        // Cria o objeto da postagem com os dados do usuário
                         val postagem = hashMapOf(
                             "titulo" to titulo,
                             "mensagem" to mensagem,
@@ -147,11 +158,10 @@ class CriarPostActivity : AppCompatActivity() {
                             "timestamp" to FieldValue.serverTimestamp()
                         )
 
-                        // Adiciona os dados ao Firestore
                         firestore.collection("postagens")
                             .add(postagem)
                             .addOnSuccessListener { documentReference ->
-                                uploadArquivos(documentReference.id) // Passa o ID da postagem
+                                uploadArquivos(documentReference.id)
                             }
                             .addOnFailureListener { e ->
                                 Toast.makeText(this, "Erro ao criar postagem: ${e.message}", Toast.LENGTH_SHORT).show()
@@ -164,21 +174,17 @@ class CriarPostActivity : AppCompatActivity() {
                     Toast.makeText(this, "Erro ao acessar dados do usuário: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
         } else {
-            Toast.makeText(this, "Título, mensagem e dados do usuário são obrigatórios.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Erro: Usuário não autenticado.", Toast.LENGTH_SHORT).show()
         }
     }
-
 
     private fun uploadArquivos(postId: String) {
         val uploadTasks = mutableListOf<Task<*>>()
 
-        // Upload de vídeo
         videoUri?.let {
             val videoRef = storage.reference.child("videos/$postId/${UUID.randomUUID()}.mp4")
             uploadTasks.add(videoRef.putFile(it).continueWithTask { task ->
-                if (!task.isSuccessful) {
-                    throw task.exception ?: Exception("Erro ao fazer upload do vídeo")
-                }
+                if (!task.isSuccessful) throw task.exception ?: Exception("Erro ao fazer upload do vídeo")
                 videoRef.downloadUrl
             }.addOnSuccessListener { uri ->
                 firestore.collection("postagens").document(postId)
@@ -186,13 +192,10 @@ class CriarPostActivity : AppCompatActivity() {
             })
         }
 
-        // Upload de foto
         fotoUri?.let {
             val fotoRef = storage.reference.child("fotos/$postId/${UUID.randomUUID()}.jpg")
             uploadTasks.add(fotoRef.putFile(it).continueWithTask { task ->
-                if (!task.isSuccessful) {
-                    throw task.exception ?: Exception("Erro ao fazer upload da foto")
-                }
+                if (!task.isSuccessful) throw task.exception ?: Exception("Erro ao fazer upload da foto")
                 fotoRef.downloadUrl
             }.addOnSuccessListener { uri ->
                 firestore.collection("postagens").document(postId)
@@ -200,13 +203,10 @@ class CriarPostActivity : AppCompatActivity() {
             })
         }
 
-        // Upload de arquivo
         arquivoUri?.let {
             val arquivoRef = storage.reference.child("arquivos/$postId/${UUID.randomUUID()}")
             uploadTasks.add(arquivoRef.putFile(it).continueWithTask { task ->
-                if (!task.isSuccessful) {
-                    throw task.exception ?: Exception("Erro ao fazer upload do arquivo")
-                }
+                if (!task.isSuccessful) throw task.exception ?: Exception("Erro ao fazer upload do arquivo")
                 arquivoRef.downloadUrl
             }.addOnSuccessListener { uri ->
                 firestore.collection("postagens").document(postId)
@@ -214,10 +214,13 @@ class CriarPostActivity : AppCompatActivity() {
             })
         }
 
-        // Aguarda todas as tarefas de upload serem concluídas
         Tasks.whenAllComplete(uploadTasks).addOnCompleteListener {
-            Toast.makeText(this, "Postagem criada com sucesso!", Toast.LENGTH_SHORT).show()
-            finish() // Fecha a atividade após a postagem ser enviada
+            if (it.isSuccessful) {
+                Toast.makeText(this, "Postagem criada com sucesso!", Toast.LENGTH_SHORT).show()
+                finish()
+            } else {
+                Toast.makeText(this, "Erro ao fazer upload de alguns arquivos. Tente novamente.", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -234,6 +237,6 @@ class CriarPostActivity : AppCompatActivity() {
     companion object {
         private const val REQUEST_VIDEO_PICK = 1
         private const val REQUEST_IMAGE_PICK = 2
-        private const val REQUEST_FILE_PICK = 3 // Adiciona uma constante para seleção de arquivos
+        private const val REQUEST_FILE_PICK = 3
     }
 }
