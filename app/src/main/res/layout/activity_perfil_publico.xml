@@ -5,14 +5,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    tools:context=".PerfilPublicoActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:title="Perfil Público"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintVertical_bias="1.0"
         tools:layout_editor_absoluteX="0dp">
 
         <LinearLayout
@@ -39,6 +51,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:background="@drawable/border_background" />
+
             </FrameLayout>
 
             <TextView
@@ -46,12 +59,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:paddingTop="@dimen/nav_header_vertical_spacing"
                 android:text="..."
                 android:textColor="@color/branco"
+                android:paddingTop="@dimen/nav_header_vertical_spacing"
                 android:textSize="26sp" />
 
+            <TextView
+                android:id="@+id/email_user"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:gravity="center"
+                android:paddingTop="@dimen/nav_header_vertical_spacing"
+                android:text="...\n"
+                android:textColor="@color/branco"
+                android:textSize="21sp" />
         </LinearLayout>
 
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

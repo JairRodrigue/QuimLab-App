@@ -1,6 +1,7 @@
 package com.teta.quimlab
 
 import android.content.Context
+import android.content.Intent // Importação necessária
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -41,11 +42,13 @@ class PostAdapter(private val context: Context, private var postagens: List<Map<
         private val fotoPerfilImageView: ImageView = itemView.findViewById(R.id.foto_perfil)
         private val tituloTextView: TextView = itemView.findViewById(R.id.tituloTextView)
         private val mensagemTextView: TextView = itemView.findViewById(R.id.mensagemTextView)
+        private val entrarPerfilLayout: View = itemView.findViewById(R.id.entrar_perfil)
 
         fun bind(postagem: Map<String, Any>) {
             val titulo = postagem["titulo"] as? String ?: "Sem título"
             val mensagem = postagem["mensagem"] as? String ?: "Sem mensagem"
             val usuarioId = postagem["usuarioId"] as? String
+            val emailUsuario = postagem["email"] as? String ?: "Email desconhecido"
 
             tituloTextView.text = titulo
             mensagemTextView.text = mensagem
@@ -56,6 +59,16 @@ class PostAdapter(private val context: Context, private var postagens: List<Map<
             } else {
                 nomeUsuarioTextView.text = "Usuário desconhecido"
                 fotoPerfilImageView.setImageResource(R.drawable.user_icon)
+            }
+
+            // Adiciona o click listener
+            entrarPerfilLayout.setOnClickListener {
+                val intent = Intent(context, PerfilPublicoActivity::class.java).apply {
+                    putExtra("usuarioId", usuarioId)
+                    putExtra("nomeUsuario", nomeUsuarioTextView.text.toString())
+                    putExtra("emailUsuario", emailUsuario)
+                }
+                context.startActivity(intent)
             }
         }
 
