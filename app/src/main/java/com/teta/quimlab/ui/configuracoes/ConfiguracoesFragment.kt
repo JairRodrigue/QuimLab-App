@@ -55,6 +55,11 @@ class ConfiguracoesFragment : Fragment() {
             startActivity(Intent(requireActivity(), SobreOQuimLabActivity::class.java))
         }
 
+        // Configurar botão de exclusão de conta
+        binding.optionDeleteAccount1.setOnClickListener {
+            showDeleteAccountConfirmationDialog()
+        }
+
         return binding.root
     }
 
@@ -109,6 +114,60 @@ class ConfiguracoesFragment : Fragment() {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         })
         requireActivity().finish()
+    }
+
+    private fun showDeleteAccountConfirmationDialog() {
+        val builder = AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
+
+        builder.setTitle("Informação Importante")
+            .setMessage("Para excluir sua conta, você deve ter feito login recentemente. Deseja continuar?")
+            .setPositiveButton("Excluir Conta") { dialog: DialogInterface, _: Int ->
+                showFinalConfirmationDialog()
+            }
+            .setNegativeButton("Cancelar") { dialog: DialogInterface, _: Int -> dialog.dismiss() }
+
+        val dialog = builder.create()
+
+        dialog.setOnShowListener {
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.roxo_padrao))
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.branco))
+        }
+
+        dialog.show()
+    }
+
+    private fun showFinalConfirmationDialog() {
+        val builder = AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
+
+        builder.setTitle("Confirmar Exclusão")
+            .setMessage("Tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.")
+            .setPositiveButton("Sim") { _: DialogInterface, _: Int -> deleteUserAccount() }
+            .setNegativeButton("Cancelar") { dialogInterface: DialogInterface, _: Int -> dialogInterface.dismiss() }
+
+        val dialog = builder.create()
+
+        dialog.setOnShowListener {
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.roxo_padrao))
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.branco))
+        }
+
+        dialog.show()
+    }
+
+    private fun deleteUserAccount() {
+        val user = firebaseAuth.currentUser
+        user?.delete()?.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Toast.makeText(requireContext(), "Conta excluída com sucesso.", Toast.LENGTH_SHORT).show()
+                performLogout() // Logout após a exclusão
+            } else {
+                Toast.makeText(requireContext(), "Erro ao excluir conta. Saia e faça a autenticação novamente.", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun showPasswordResetDialog() {
