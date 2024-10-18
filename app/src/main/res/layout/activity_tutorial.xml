@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/preto2"
+    tools:context=".TutorialActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"> <!-- Adicionado padding para melhor espaçamento -->
+
+        <Space
+            android:id="@+id/space"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <LinearLayout
+            android:id="@+id/name_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/logo_sem_fundo" />
+
+            <TextView
+                android:id="@+id/text_quim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quim"
+                android:textAlignment="center"
+                android:textColor="@color/roxo_padrao"
+                android:textSize="70sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_lab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lab"
+                android:textAlignment="center"
+                android:textColor="@color/azul_padrao"
+                android:textSize="70sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Sobre o Aplicativo"
+            android:textColor="@color/branco"
+            android:textSize="34sp" />
+
+        <TextView
+            android:id="@+id/text_poem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:textColor="@color/branco"
+            android:textSize="18sp"
+            android:text="(Mudar o texto depois)...\n
+        Com QuimLab, tudo pode brilhar!" /> <!-- Truncado o texto longo para melhor legibilidade -->
+
+        <TextView
+            android:id="@+id/voltar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="Voltar"
+            android:textAlignment="center"
+            android:textColor="@color/branco"
+            android:textSize="17sp" />
+
+        <Space
+            android:id="@+id/space2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+    </LinearLayout>
+</ScrollView>

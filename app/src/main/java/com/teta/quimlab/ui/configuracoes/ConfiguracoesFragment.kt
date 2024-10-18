@@ -1,8 +1,8 @@
 package com.teta.quimlab.ui.configuracoes
 
 import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.teta.quimlab.PerfilActivity
 import com.teta.quimlab.R
 import com.teta.quimlab.SobreOQuimLabActivity
+import com.teta.quimlab.TutorialActivity
 import com.teta.quimlab.databinding.FragmentConfiguracoesBinding
 import com.teta.quimlab.ui.authentication.LoginActivity
 
@@ -55,9 +56,21 @@ class ConfiguracoesFragment : Fragment() {
             startActivity(Intent(requireActivity(), SobreOQuimLabActivity::class.java))
         }
 
-        // Configurar botão de exclusão de conta
         binding.optionDeleteAccount1.setOnClickListener {
             showDeleteAccountConfirmationDialog()
+        }
+
+        // Botões de Feedback, Relatório de Problemas e Tutorial
+        binding.optionFeedback.setOnClickListener {
+            showFeedbackDialog()
+        }
+
+        binding.optionReportIssue.setOnClickListener {
+            showProblemReportDialog()
+        }
+
+        binding.optionTutorial.setOnClickListener {
+            startActivity(Intent(requireActivity(), TutorialActivity::class.java))
         }
 
         return binding.root
@@ -73,8 +86,8 @@ class ConfiguracoesFragment : Fragment() {
                         val userIcon = binding.root.findViewById<ImageView>(R.id.user_icon)
                         Glide.with(this)
                             .load(imageUrl)
-                            .placeholder(R.drawable.user_icon) // Ícone padrão enquanto carrega
-                            .error(R.drawable.user_icon) // Ícone padrão se houver erro
+                            .placeholder(R.drawable.user_icon)
+                            .error(R.drawable.user_icon)
                             .into(userIcon)
                     }
                 }
@@ -163,7 +176,7 @@ class ConfiguracoesFragment : Fragment() {
         user?.delete()?.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 Toast.makeText(requireContext(), "Conta excluída com sucesso.", Toast.LENGTH_SHORT).show()
-                performLogout() // Logout após a exclusão
+                performLogout()
             } else {
                 Toast.makeText(requireContext(), "Erro ao excluir conta. Saia e faça a autenticação novamente.", Toast.LENGTH_SHORT).show()
             }
@@ -219,8 +232,96 @@ class ConfiguracoesFragment : Fragment() {
             }
     }
 
+    private fun showFeedbackDialog() {
+        val builder = AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
+        builder.setTitle("Enviar Feedback")
+
+        val input = EditText(requireContext()).apply {
+            hint = "Escreva seu feedback aqui"
+            setTextColor(ContextCompat.getColor(requireContext(), R.color.branco))
+            setHintTextColor(ContextCompat.getColor(requireContext(), R.color.branco_transparente))
+        }
+        builder.setView(input)
+
+        builder.setPositiveButton("Enviar") { _: DialogInterface, _: Int ->
+            val feedback = input.text.toString()
+            if (feedback.isNotEmpty()) {
+                sendEmail("Feedback", feedback)
+            } else {
+                Toast.makeText(requireContext(), "Por favor, insira seu feedback", Toast.LENGTH_SHORT).show()
+            }
+        }
+        builder.setNegativeButton("Cancelar") { dialogInterface: DialogInterface, _: Int ->
+            dialogInterface.dismiss()
+        }
+
+        val dialog = builder.create()
+
+        dialog.setOnShowListener {
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.roxo_padrao))
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.branco))
+            input.setTextColor(ContextCompat.getColor(requireContext(), R.color.branco))
+            input.setHintTextColor(ContextCompat.getColor(requireContext(), R.color.branco_transparente))
+            dialog.window?.setBackgroundDrawableResource(R.color.preto3)
+        }
+
+        dialog.show()
+    }
+
+    private fun showProblemReportDialog() {
+        val builder = AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
+        builder.setTitle("Relatar Problema")
+
+        val input = EditText(requireContext()).apply {
+            hint = "Descreva o problema aqui"
+            setTextColor(ContextCompat.getColor(requireContext(), R.color.branco))
+            setHintTextColor(ContextCompat.getColor(requireContext(), R.color.branco_transparente))
+        }
+        builder.setView(input)
+
+        builder.setPositiveButton("Enviar") { _: DialogInterface, _: Int ->
+            val issue = input.text.toString()
+            if (issue.isNotEmpty()) {
+                sendEmail("Relatório de Problema", issue)
+            } else {
+                Toast.makeText(requireContext(), "Por favor, descreva o problema", Toast.LENGTH_SHORT).show()
+            }
+        }
+        builder.setNegativeButton("Cancelar") { dialogInterface: DialogInterface, _: Int ->
+            dialogInterface.dismiss()
+        }
+
+        val dialog = builder.create()
+
+        dialog.setOnShowListener {
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.roxo_padrao))
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.branco))
+            input.setTextColor(ContextCompat.getColor(requireContext(), R.color.branco))
+            input.setHintTextColor(ContextCompat.getColor(requireContext(), R.color.branco_transparente))
+            dialog.window?.setBackgroundDrawableResource(R.color.preto3)
+        }
+
+        dialog.show()
+    }
+
+    private fun sendEmail(subject: String, message: String) {
+        // Chama a função do Firebase para enviar o email
+        val emailData = hashMapOf(
+            "from" to "noreply@quimlab.com",
+            "to" to "jair.rodrigues@ufrpe.br",
+            "subject" to subject,
+            "message" to message
+        )
+
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 }

@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
 
-        <activity android:name=".FullImageActivity" />
+        <activity android:name=".TutorialActivity"></activity>
 
         <activity
             android:name=".CriarPostActivity"
