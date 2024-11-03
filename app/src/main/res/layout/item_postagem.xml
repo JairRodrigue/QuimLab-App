@@ -123,7 +123,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/coment"
+                android:src="@drawable/chat_bubble_24dp_e8eaed_fill0_wght400_grad0_opsz24"
                 android:contentDescription="Comentários"
                 android:background="@null"
                 android:padding="8dp" />
