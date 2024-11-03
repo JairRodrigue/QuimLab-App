@@ -1,0 +1,1 @@
+/home/jair/Documentos/Projeto 3/QuimLab/QuimLab/opencv/build/intermediates/cxx/RelWithDebInfo/2b6w1i1h/obj/x86

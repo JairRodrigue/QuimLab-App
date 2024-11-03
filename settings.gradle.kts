@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "QuimLab"
 include(":app")
+include(":opencv")

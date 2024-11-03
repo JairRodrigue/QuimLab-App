@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "/home/jair/Documentos/Projeto 3/QuimLab/QuimLab/opencv/libcxx_helper/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/home/jair/Android/Sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/home/jair/Documentos/Projeto 3/QuimLab/QuimLab/opencv/.cxx/RelWithDebInfo/2b6w1i1h/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/home/jair/Android/Sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/home/jair/Documentos/Projeto 3/QuimLab/QuimLab/opencv/.cxx/RelWithDebInfo/2b6w1i1h/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "opencv_jni_shared::@6890427a1f51a3e7e1df": {
+      "artifactName": "opencv_jni_shared",
+      "abi": "x86",
+      "output": "/home/jair/Documentos/Projeto 3/QuimLab/QuimLab/opencv/.cxx/RelWithDebInfo/2b6w1i1h/x86/libopencv_jni_shared.a",
+      "runtimeFiles": []
+    }
+  }
+}

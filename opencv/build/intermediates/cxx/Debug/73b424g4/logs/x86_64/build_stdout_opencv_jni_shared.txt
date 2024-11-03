@@ -1,0 +1,2 @@
+ninja: Entering directory `/home/jair/Documentos/Projeto 3/QuimLab/QuimLab/opencv/.cxx/Debug/73b424g4/x86_64'
+ninja: no work to do.

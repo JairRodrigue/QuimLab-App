@@ -1,0 +1,3 @@
+/home/jair/Documentos/Projeto 3/QuimLab/QuimLab/opencv/.cxx/RelWithDebInfo/2b6w1i1h/x86/CMakeFiles/opencv_jni_shared.dir
+/home/jair/Documentos/Projeto 3/QuimLab/QuimLab/opencv/.cxx/RelWithDebInfo/2b6w1i1h/x86/CMakeFiles/edit_cache.dir
+/home/jair/Documentos/Projeto 3/QuimLab/QuimLab/opencv/.cxx/RelWithDebInfo/2b6w1i1h/x86/CMakeFiles/rebuild_cache.dir
