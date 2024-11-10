@@ -1,4 +1,0 @@
-/home/jair/Android/Sdk/cmake/3.22.1/bin/ninja \
-  -C \
-  "/home/jair/Documentos/Projeto 3/QuimLab/QuimLab/opencv/.cxx/Debug/73b424g4/x86_64" \
-  opencv_jni_shared
