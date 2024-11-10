@@ -1,19 +1,19 @@
 {
   "buildFiles": [
-    "/home/jair/Documentos/Projeto 3/QuimLab/QuimLab/opencv/libcxx_helper/CMakeLists.txt"
+    "C:\\Users\\chayf\\StudioProjects\\QuimLab\\opencv\\libcxx_helper\\CMakeLists.txt"
   ],
   "cleanCommandsComponents": [
     [
-      "/home/jair/Android/Sdk/cmake/3.22.1/bin/ninja",
+      "C:\\Users\\chayf\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
       "-C",
-      "/home/jair/Documentos/Projeto 3/QuimLab/QuimLab/opencv/.cxx/Debug/73b424g4/x86",
+      "C:\\Users\\chayf\\StudioProjects\\QuimLab\\opencv\\.cxx\\Debug\\73b424g4\\x86",
       "clean"
     ]
   ],
   "buildTargetsCommandComponents": [
-    "/home/jair/Android/Sdk/cmake/3.22.1/bin/ninja",
+    "C:\\Users\\chayf\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
     "-C",
-    "/home/jair/Documentos/Projeto 3/QuimLab/QuimLab/opencv/.cxx/Debug/73b424g4/x86",
+    "C:\\Users\\chayf\\StudioProjects\\QuimLab\\opencv\\.cxx\\Debug\\73b424g4\\x86",
     "{LIST_OF_TARGETS_TO_BUILD}"
   ],
   "libraries": {
@@ -21,13 +21,13 @@
       "toolchain": "toolchain",
       "abi": "x86",
       "artifactName": "opencv_jni_shared",
-      "output": "/home/jair/Documentos/Projeto 3/QuimLab/QuimLab/opencv/.cxx/Debug/73b424g4/x86/libopencv_jni_shared.a"
+      "output": "C:\\Users\\chayf\\StudioProjects\\QuimLab\\opencv\\.cxx\\Debug\\73b424g4\\x86\\libopencv_jni_shared.a"
     }
   },
   "toolchains": {
     "toolchain": {
-      "cCompilerExecutable": "/home/jair/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/linux-x86_64/bin/clang.lld",
-      "cppCompilerExecutable": "/home/jair/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++.lld"
+      "cCompilerExecutable": "C:\\Users\\chayf\\AppData\\Local\\Android\\Sdk\\ndk\\27.0.12077973\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+      "cppCompilerExecutable": "C:\\Users\\chayf\\AppData\\Local\\Android\\Sdk\\ndk\\27.0.12077973\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
     }
   },
   "cFileExtensions": [],

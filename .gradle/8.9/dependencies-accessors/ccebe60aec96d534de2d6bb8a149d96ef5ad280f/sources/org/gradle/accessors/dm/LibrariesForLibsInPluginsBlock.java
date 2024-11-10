@@ -94,7 +94,7 @@ public class LibrariesForLibsInPluginsBlock extends AbstractExternalDependencyFa
 
     /**
      * Dependency provider for <b>opencv</b> with <b>org.opencv:opencv</b> coordinates and
-     * with version <b>4.5.1</b>
+     * with version <b>4.10.0</b>
      * <p>
      * This dependency was declared in catalog libs.versions.toml
      *

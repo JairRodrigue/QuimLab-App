@@ -1,26 +1,26 @@
 {
   "buildFiles": [
-    "/home/jair/Documentos/Projeto 3/QuimLab/QuimLab/opencv/libcxx_helper/CMakeLists.txt"
+    "C:\\Users\\chayf\\StudioProjects\\QuimLab\\opencv\\libcxx_helper\\CMakeLists.txt"
   ],
   "cleanCommandsComponents": [
     [
-      "/home/jair/Android/Sdk/cmake/3.22.1/bin/ninja",
+      "C:\\Users\\chayf\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
       "-C",
-      "/home/jair/Documentos/Projeto 3/QuimLab/QuimLab/opencv/.cxx/Debug/73b424g4/x86_64",
+      "C:\\Users\\chayf\\StudioProjects\\QuimLab\\opencv\\.cxx\\Debug\\73b424g4\\x86_64",
       "clean"
     ]
   ],
   "buildTargetsCommandComponents": [
-    "/home/jair/Android/Sdk/cmake/3.22.1/bin/ninja",
+    "C:\\Users\\chayf\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
     "-C",
-    "/home/jair/Documentos/Projeto 3/QuimLab/QuimLab/opencv/.cxx/Debug/73b424g4/x86_64",
+    "C:\\Users\\chayf\\StudioProjects\\QuimLab\\opencv\\.cxx\\Debug\\73b424g4\\x86_64",
     "{LIST_OF_TARGETS_TO_BUILD}"
   ],
   "libraries": {
     "opencv_jni_shared::@6890427a1f51a3e7e1df": {
       "artifactName": "opencv_jni_shared",
       "abi": "x86_64",
-      "output": "/home/jair/Documentos/Projeto 3/QuimLab/QuimLab/opencv/.cxx/Debug/73b424g4/x86_64/libopencv_jni_shared.a",
+      "output": "C:\\Users\\chayf\\StudioProjects\\QuimLab\\opencv\\.cxx\\Debug\\73b424g4\\x86_64\\libopencv_jni_shared.a",
       "runtimeFiles": []
     }
   }

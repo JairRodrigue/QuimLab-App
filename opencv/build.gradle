@@ -105,8 +105,6 @@ android {
         minSdkVersion 21              // Mínimo SDK suportado
         targetSdkVersion 34            // Alvo atualizado para a versão mais recente
 
-        versionCode openCVersionCode
-        versionName openCVersionName
 
         externalNativeBuild {
             cmake {
@@ -198,5 +196,6 @@ publishing {
 }
 
 dependencies {
-    // Adicione as dependências necessárias aqui, se houver.
+    implementation 'com.google.firebase:firebase-firestore:23.0.3'
+    implementation 'com.google.firebase:firebase-auth:21.0.3'
 }
