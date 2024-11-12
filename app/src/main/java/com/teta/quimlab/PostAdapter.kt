@@ -60,7 +60,7 @@ class PostAdapter(private val context: Context, private var postagens: List<Map<
         fun bind(postagem: Map<String, Any>) {
             val titulo = postagem["titulo"] as? String ?: "Sem título"
             val mensagem = postagem["mensagem"] as? String ?: "Sem mensagem"
-            val usuarioId = postagem["usuarioId"] as? String
+            val usuarioId = postagem["usuarioId"] as? String?: return
             val fotoUrl = postagem["fotoUrl"] as? String
             val videoUrl = postagem["videoUrl"] as? String
             val arquivoUrl = postagem["arquivoUrl"] as? String
