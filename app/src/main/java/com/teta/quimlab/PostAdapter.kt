@@ -64,8 +64,7 @@ class PostAdapter(private val context: Context, private var postagens: List<Map<
             val fotoUrl = postagem["fotoUrl"] as? String
             val videoUrl = postagem["videoUrl"] as? String
             val arquivoUrl = postagem["arquivoUrl"] as? String
-            val emailUsuario = postagem["email"] as? String ?: "Email desconhecido"
-            postId = postagem["postId"] as? String
+            postId = postagem["id"] as? String
 
             tituloTextView.text = titulo
             mensagemTextView.text = mensagem
@@ -76,14 +75,17 @@ class PostAdapter(private val context: Context, private var postagens: List<Map<
                 imagemView.visibility = View.VISIBLE
                 Glide.with(context).load(fotoUrl).into(imagemView)
                 imagemView.setOnClickListener {
-                    val intent = Intent(Intent.ACTION_VIEW).setDataAndType(Uri.parse(fotoUrl), "image/*")
+                    val intent =
+                        Intent(Intent.ACTION_VIEW).setDataAndType(Uri.parse(fotoUrl), "image/*")
                     context.startActivity(intent)
                 }
             } else if (!videoUrl.isNullOrEmpty()) {
                 imagemView.visibility = View.VISIBLE
                 Glide.with(context).load(videoUrl).into(imagemView)
                 imagemView.setOnClickListener {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl)).setDataAndType(Uri.parse(videoUrl), "video/*")
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl)).setDataAndType(
+                        Uri.parse(videoUrl), "video/*"
+                    )
                     context.startActivity(intent)
                 }
             } else {
@@ -120,7 +122,6 @@ class PostAdapter(private val context: Context, private var postagens: List<Map<
                 val intent = Intent(context, PerfilPublicoActivity::class.java).apply {
                     putExtra("usuarioId", usuarioId)
                     putExtra("nomeUsuario", nomeUsuarioTextView.text.toString())
-                    putExtra("emailUsuario", emailUsuario)
                 }
                 context.startActivity(intent)
             }
@@ -128,11 +129,12 @@ class PostAdapter(private val context: Context, private var postagens: List<Map<
 
         private fun carregarStatusCurtida() {
             postId?.let { id ->
-                firestore.collection("posts").document(id).get()
+                firestore.collection("postagens").document(id).get()
                     .addOnSuccessListener { document ->
                         if (document.exists()) {
                             val curtidas = document.getLong("curtidas") ?: 0
-                            val usuariosQueCurtiram = document.get("usuariosQueCurtiram") as? List<String> ?: emptyList()
+                            val usuariosQueCurtiram =
+                                document.get("usuariosQueCurtiram") as? List<String> ?: emptyList()
                             likeCount = curtidas.toInt()
                             isLiked = currentUserId in usuariosQueCurtiram
 
@@ -148,45 +150,39 @@ class PostAdapter(private val context: Context, private var postagens: List<Map<
 
         private fun curtirPostagem() {
             postId?.let { id ->
-                firestore.collection("posts").document(id)
+                firestore.collection("postagens").document(id)
                     .update(
                         "curtidas", FieldValue.increment(1),
                         "usuariosQueCurtiram", FieldValue.arrayUnion(currentUserId)
                     )
                     .addOnSuccessListener {
-                        Log.d("PostAdapter", "Postagem curtida com sucesso!")
                         likeCount++
+                        isLiked = true
                         likeCountTextView.text = likeCount.toString()
                         btnLike.setImageResource(R.drawable.like)
-                        isLiked = true
                     }
                     .addOnFailureListener { exception ->
                         Log.e("PostAdapter", "Erro ao curtir postagem: ", exception)
                     }
-            } ?: run {
-                Log.e("PostAdapter", "postId é nulo, não foi possível curtir a postagem")
             }
         }
 
         private fun descurtirPostagem() {
             postId?.let { id ->
-                firestore.collection("posts").document(id)
+                firestore.collection("postagens").document(id)
                     .update(
                         "curtidas", FieldValue.increment(-1),
                         "usuariosQueCurtiram", FieldValue.arrayRemove(currentUserId)
                     )
                     .addOnSuccessListener {
-                        Log.d("PostAdapter", "Curtida removida com sucesso!")
                         likeCount--
+                        isLiked = false
                         likeCountTextView.text = likeCount.toString()
                         btnLike.setImageResource(R.drawable.like_nc)
-                        isLiked = false
                     }
                     .addOnFailureListener { exception ->
-                        Log.e("PostAdapter", "Erro ao remover curtida: ", exception)
+                        Log.e("PostAdapter", "Erro ao descurtir postagem: ", exception)
                     }
-            } ?: run {
-                Log.e("PostAdapter", "postId é nulo, não foi possível remover a curtida")
             }
         }
 
@@ -213,7 +209,8 @@ class PostAdapter(private val context: Context, private var postagens: List<Map<
 
         private fun carregarImagemDePerfil(fotoPerfilUrl: String?) {
             if (!fotoPerfilUrl.isNullOrEmpty()) {
-                Glide.with(context).load(fotoPerfilUrl).placeholder(R.drawable.user_icon).error(R.drawable.user_icon).into(fotoPerfilImageView)
+                Glide.with(context).load(fotoPerfilUrl).placeholder(R.drawable.user_icon)
+                    .error(R.drawable.user_icon).into(fotoPerfilImageView)
             } else {
                 fotoPerfilImageView.setImageResource(R.drawable.user_icon)
             }

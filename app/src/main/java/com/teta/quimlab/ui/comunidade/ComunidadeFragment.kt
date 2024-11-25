@@ -21,8 +21,7 @@ class ComunidadeFragment : Fragment() {
     private val firestore = FirebaseFirestore.getInstance()
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentComunidadeBinding.inflate(inflater, container, false)
@@ -71,7 +70,6 @@ class ComunidadeFragment : Fragment() {
                 Toast.makeText(requireContext(), "Erro ao carregar postagens: ${exception.message}", Toast.LENGTH_SHORT).show()
             }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
