@@ -1,0 +1,37 @@
+{
+  "buildFiles": [
+    "/home/jair/Documentos/Projeto 3/QuimLab/QuimLab-App/opencv/libcxx_helper/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/home/jair/Android/Sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/home/jair/Documentos/Projeto 3/QuimLab/QuimLab-App/opencv/.cxx/Debug/y54b7z1k/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/home/jair/Android/Sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/home/jair/Documentos/Projeto 3/QuimLab/QuimLab-App/opencv/.cxx/Debug/y54b7z1k/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "opencv_jni_shared::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "x86",
+      "artifactName": "opencv_jni_shared",
+      "output": "/home/jair/Documentos/Projeto 3/QuimLab/QuimLab-App/opencv/.cxx/Debug/y54b7z1k/x86/libopencv_jni_shared.a"
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "/home/jair/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/linux-x86_64/bin/clang.lld",
+      "cppCompilerExecutable": "/home/jair/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++.lld"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

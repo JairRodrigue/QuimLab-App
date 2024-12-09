@@ -1,0 +1,1 @@
+/home/jair/Documentos/Projeto 3/QuimLab/QuimLab-App/opencv/build/intermediates/cxx/Debug/y54b7z1k/obj/arm64-v8a

@@ -1,7 +1,10 @@
 [versions]
-agp = "8.7.2"
+agp = "8.7.3"
 androidImageCropper = "4.4.0"
 androidImageCropperVersion = "4.0.0"
+cameraCoreVersion = "1.5.0"
+cameraLifecycleVersion = "1.5.0"
+cameraViewVersion = "1.5.0"
 compiler = "4.13.2"
 firebaseBom = "33.3.0"
 glide = "4.13.2"
@@ -27,8 +30,14 @@ activityCompose = "1.8.0"
 composeBom = "2024.04.01"
 firebaseStorageKtx = "21.0.1"
 photoview = "2.3.0"
+cameraCore = "1.4.0"
+cameraView = "1.4.0"
+cameraLifecycle = "1.4.0"
 
 [libraries]
+androidx-camera-core-v150 = { module = "androidx.camera:camera-core", version.ref = "cameraCoreVersion" }
+androidx-camera-lifecycle-v150 = { module = "androidx.camera:camera-lifecycle", version.ref = "cameraLifecycleVersion" }
+androidx-camera-view-v150 = { module = "androidx.camera:camera-view", version.ref = "cameraViewVersion" }
 opencv = { group = "org.opencv", name = "opencv", version = "4.10.0" }
 android-image-cropper = { module = "com.canhub.cropper:android-image-cropper", version.ref = "androidImageCropper" }
 android-image-cropper-v400 = { module = "com.canhub.cropper:android-image-cropper", version.ref = "androidImageCropperVersion" }
@@ -65,6 +74,9 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 firebase-storage-ktx = { group = "com.google.firebase", name = "firebase-storage-ktx", version.ref = "firebaseStorageKtx" }
 photoview = { module = "com.github.chrisbanes:PhotoView", version.ref = "photoview" }
+androidx-camera-core = { group = "androidx.camera", name = "camera-core", version.ref = "cameraCore" }
+androidx-camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "cameraView" }
+androidx-camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "cameraLifecycle" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

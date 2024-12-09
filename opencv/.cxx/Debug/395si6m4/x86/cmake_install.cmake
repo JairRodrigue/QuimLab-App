@@ -1,4 +1,4 @@
-# Install script for directory: /home/jair/Documentos/Projeto 3/QuimLab/QuimLab/opencv/libcxx_helper
+# Install script for directory: /home/jair/Documentos/Projeto 3/QuimLab/QuimLab-App/opencv/libcxx_helper
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/jair/Documentos/Projeto 3/QuimLab/QuimLab/opencv/.cxx/Debug/395si6m4/x86/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/jair/Documentos/Projeto 3/QuimLab/QuimLab-App/opencv/.cxx/Debug/395si6m4/x86/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
