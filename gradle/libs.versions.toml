@@ -6,6 +6,7 @@ cameraCoreVersion = "1.5.0"
 cameraLifecycleVersion = "1.5.0"
 cameraViewVersion = "1.5.0"
 compiler = "4.13.2"
+constraintlayoutVersion = "2.2.0"
 firebaseBom = "33.3.0"
 glide = "4.13.2"
 imageCropper = "4.0.0"
@@ -33,11 +34,13 @@ photoview = "2.3.0"
 cameraCore = "1.4.0"
 cameraView = "1.4.0"
 cameraLifecycle = "1.4.0"
+textRecognition = "16.0.1"
 
 [libraries]
 androidx-camera-core-v150 = { module = "androidx.camera:camera-core", version.ref = "cameraCoreVersion" }
 androidx-camera-lifecycle-v150 = { module = "androidx.camera:camera-lifecycle", version.ref = "cameraLifecycleVersion" }
 androidx-camera-view-v150 = { module = "androidx.camera:camera-view", version.ref = "cameraViewVersion" }
+androidx-constraintlayout-v220 = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayoutVersion" }
 opencv = { group = "org.opencv", name = "opencv", version = "4.10.0" }
 android-image-cropper = { module = "com.canhub.cropper:android-image-cropper", version.ref = "androidImageCropper" }
 android-image-cropper-v400 = { module = "com.canhub.cropper:android-image-cropper", version.ref = "androidImageCropperVersion" }
@@ -77,6 +80,7 @@ photoview = { module = "com.github.chrisbanes:PhotoView", version.ref = "photovi
 androidx-camera-core = { group = "androidx.camera", name = "camera-core", version.ref = "cameraCore" }
 androidx-camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "cameraView" }
 androidx-camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "cameraLifecycle" }
+text-recognition = { module = "com.google.mlkit:text-recognition", version.ref = "textRecognition" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

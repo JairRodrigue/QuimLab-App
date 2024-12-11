@@ -44,6 +44,7 @@ android {
 }
 
 dependencies {
+    implementation (libs.androidx.constraintlayout.v220)
     implementation (libs.opencv)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -68,6 +69,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation (libs.text.recognition)
+
 
 
 }

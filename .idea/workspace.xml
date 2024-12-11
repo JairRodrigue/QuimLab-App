@@ -46,7 +46,17 @@
           <theme>@style/AppTheme</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_pesquisa.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_sobre_o_quimlab.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_texto_detectado.xml">
         <config>
           <theme>@style/AppTheme</theme>
         </config>
@@ -128,6 +138,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a72cf87-93b0-4af1-9546-c3fa44ef6ac4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/teta/quimlab/ui/inicio/PesquisaActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/teta/quimlab/ui/inicio/TextoDetectadoActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_pesquisa.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_texto_detectado.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.9/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.9/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/checksums/md5-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.9/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/checksums/sha1-checksums.bin" afterDir="false" />
@@ -145,49 +159,18 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/teta/quimlab/ui/inicio/InicioFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/teta/quimlab/ui/inicio/InicioFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_inicio.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_inicio.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/.cmake/api/v1/reply/cache-v2-9b7f2737110a4cc4b90a.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/.cmake/api/v1/reply/cmakeFiles-v1-755d7053676e0504566f.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/.cmake/api/v1/reply/codemodel-v2-fc8e5031dd3b520927b8.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/.cmake/api/v1/reply/index-2024-11-25T13-51-47-0530.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/CMakeFiles/3.22.1-g37088a8/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/CMakeFiles/3.22.1-g37088a8/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/CMakeFiles/3.22.1-g37088a8/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/CMakeFiles/3.22.1-g37088a8/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/CMakeFiles/3.22.1-g37088a8/CompilerIdC/CMakeCCompilerId.o" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/CMakeFiles/3.22.1-g37088a8/CompilerIdC/CMakeCCompilerId.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/CMakeFiles/3.22.1-g37088a8/CompilerIdCXX/CMakeCXXCompilerId.o" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/CMakeFiles/3.22.1-g37088a8/CompilerIdCXX/CMakeCXXCompilerId.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/CMakeFiles/rules.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/android_gradle_build.json" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/android_gradle_build.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/android_gradle_build_mini.json" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/android_gradle_build_mini.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/build_file_index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/build_file_index.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/cmake_install.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/compile_commands.json" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/compile_commands.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/compile_commands.json.bin" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/compile_commands.json.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/configure_fingerprint.bin" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/configure_fingerprint.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/metadata_generation_command.txt" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/metadata_generation_command.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/symbol_folder_index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/395si6m4/x86/symbol_folder_index.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/tools/debug/arm64-v8a/compile_commands.json" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/tools/debug/arm64-v8a/compile_commands.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/.cxx/tools/debug/x86/compile_commands.json" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/tools/debug/x86/compile_commands.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/build/intermediates/cxx/Debug/395si6m4/logs/x86/build_model.json" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/intermediates/cxx/Debug/395si6m4/logs/x86/build_model.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/build/intermediates/cxx/Debug/395si6m4/logs/x86/configure_command" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/intermediates/cxx/Debug/395si6m4/logs/x86/configure_command" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/build/intermediates/cxx/Debug/395si6m4/logs/x86/configure_stdout.txt" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/intermediates/cxx/Debug/395si6m4/logs/x86/configure_stdout.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/build/intermediates/cxx/Debug/395si6m4/logs/x86/generate_cxx_metadata_33_timing.txt" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/intermediates/cxx/Debug/395si6m4/logs/x86/generate_cxx_metadata_33_timing.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/build/intermediates/cxx/Debug/395si6m4/logs/x86/metadata_generation_record.json" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/intermediates/cxx/Debug/395si6m4/logs/x86/metadata_generation_record.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/arm64-v8a/.cmake/api/v1/reply/index-2024-12-09T03-50-18-0829.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/arm64-v8a/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/arm64-v8a/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/arm64-v8a/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/arm64-v8a/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/arm64-v8a/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/arm64-v8a/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/arm64-v8a/configure_fingerprint.bin" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/arm64-v8a/configure_fingerprint.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/x86/.cmake/api/v1/reply/index-2024-12-09T03-49-37-0698.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/x86/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/x86/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/x86/configure_fingerprint.bin" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/x86/configure_fingerprint.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/build/intermediates/cxx/Debug/y54b7z1k/logs/x86/generate_cxx_metadata_33_timing.txt" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/intermediates/cxx/Debug/y54b7z1k/logs/x86/generate_cxx_metadata_33_timing.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/opencv/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/build/intermediates/incremental/debug/packageDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/intermediates/incremental/debug/packageDebugResources/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/build/intermediates/incremental/mergeDebugShaders/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/intermediates/incremental/mergeDebugShaders/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/build/intermediates/incremental/packageDebugAssets/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/intermediates/incremental/packageDebugAssets/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/build/intermediates/prefab_package_header_only/prefab_publication.json/debug" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/intermediates/prefab_package_header_only/prefab_publication.json/debug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/build/intermediates/prefab_package_header_only/prefab_publication.json/release" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/intermediates/prefab_package_header_only/prefab_publication.json/release" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/opencv/build/kotlin/compileDebugKotlin/cacheable/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/kotlin/compileDebugKotlin/cacheable/last-build.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/opencv/build/kotlin/compileDebugKotlin/local-state/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/kotlin/compileDebugKotlin/local-state/build-history.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,11 +228,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="valueResourceFile" />
-        <option value="Kotlin Class" />
         <option value="Kotlin File" />
-        <option value="layoutResourceFile" />
         <option value="Class" />
         <option value="resourceFile" />
+        <option value="Kotlin Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>

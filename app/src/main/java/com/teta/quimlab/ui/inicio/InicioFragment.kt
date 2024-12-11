@@ -15,10 +15,16 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.google.mlkit.vision.common.InputImage
+import com.google.mlkit.vision.text.TextRecognition
+import com.google.mlkit.vision.text.TextRecognizer
+import com.google.mlkit.vision.text.latin.TextRecognizerOptions
 import com.teta.quimlab.databinding.FragmentInicioBinding
 import java.io.File
 import java.io.FileOutputStream
 import java.nio.ByteBuffer
+import android.content.Intent
+
 
 class InicioFragment : Fragment() {
 
@@ -30,6 +36,8 @@ class InicioFragment : Fragment() {
     private lateinit var cameraCaptureSession: CameraCaptureSession
     private lateinit var previewSize: Size
     private lateinit var imageReader: ImageReader
+
+    private var loadingMessage: String = ""
 
     private val cameraStateCallback = object : CameraDevice.StateCallback() {
         override fun onOpened(camera: CameraDevice) {
@@ -56,10 +64,11 @@ class InicioFragment : Fragment() {
         }
     }
 
-    // Launcher para seleção de imagem da galeria
     private val galleryLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         uri?.let {
-            Toast.makeText(context, "Foto selecionada: $uri", Toast.LENGTH_SHORT).show()
+            showLoadingMessage("Carregando...")
+            val inputImage = InputImage.fromFilePath(requireContext(), it)
+            processImageForText(inputImage)
         }
     }
 
@@ -73,7 +82,6 @@ class InicioFragment : Fragment() {
 
         cameraManager = requireContext().getSystemService(Context.CAMERA_SERVICE) as CameraManager
 
-        // Solicitar permissão de câmera
         if (ContextCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.CAMERA
@@ -85,7 +93,13 @@ class InicioFragment : Fragment() {
         }
 
         binding.captureButton.setOnClickListener {
+            showLoadingMessage("Carregando...")
             capturePhoto()
+        }
+        binding.btnPesquisar.setOnClickListener {
+            val intent = Intent(requireContext(), PesquisaActivity::class.java)
+
+            startActivity(intent)
         }
 
         binding.galleryButton.setOnClickListener {
@@ -141,7 +155,6 @@ class InicioFragment : Fragment() {
             return
         }
 
-        // Ajustar proporção do TextureView para corresponder ao tamanho do preview
         adjustAspectRatio(textureView, previewSize.width, previewSize.height)
 
         surfaceTexture.setDefaultBufferSize(previewSize.width, previewSize.height)
@@ -187,7 +200,7 @@ class InicioFragment : Fragment() {
                     result: TotalCaptureResult
                 ) {
                     super.onCaptureCompleted(session, request, result)
-                    Toast.makeText(context, "Foto capturada!", Toast.LENGTH_SHORT).show()
+                    hideLoadingMessage()
                 }
             },
             null
@@ -198,9 +211,31 @@ class InicioFragment : Fragment() {
         val file = File(requireContext().filesDir, "captured_photo.jpg")
         FileOutputStream(file).use { output ->
             output.write(bytes)
-            Toast.makeText(context, "Foto salva: ${file.absolutePath}", Toast.LENGTH_SHORT).show()
         }
+
+        val inputImage = InputImage.fromFilePath(requireContext(), Uri.fromFile(file))
+        processImageForText(inputImage)
     }
+
+    private fun processImageForText(inputImage: InputImage) {
+        val recognizer: TextRecognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
+
+        recognizer.process(inputImage)
+            .addOnSuccessListener { visionText ->
+                val detectedText = visionText.text
+                hideLoadingMessage()
+
+                // Cria uma Intent para iniciar a nova Activity
+                val intent = Intent(requireContext(), TextoDetectadoActivity::class.java)
+                intent.putExtra("DETECTED_TEXT", detectedText)  // Passa o texto detectado como extra
+                startActivity(intent)
+            }
+            .addOnFailureListener { e ->
+                hideLoadingMessage()
+                Toast.makeText(context, "Erro ao reconhecer texto: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
 
     private fun adjustAspectRatio(textureView: TextureView, previewWidth: Int, previewHeight: Int) {
         val layoutParams = textureView.layoutParams
@@ -219,6 +254,15 @@ class InicioFragment : Fragment() {
         textureView.layoutParams = layoutParams
     }
 
+    private fun showLoadingMessage(message: String) {
+        loadingMessage = message
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun hideLoadingMessage() {
+        loadingMessage = ""
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         if (::cameraDevice.isInitialized) {
@@ -226,4 +270,5 @@ class InicioFragment : Fragment() {
         }
         _binding = null
     }
+    
 }

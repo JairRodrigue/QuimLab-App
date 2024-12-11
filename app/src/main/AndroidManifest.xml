@@ -36,6 +36,11 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.inicio.TextoDetectadoActivity">
+        </activity>
+        <activity android:name=".ui.inicio.PesquisaActivity">
+        </activity>
+
         <activity
             android:name=".PerfilPublicoActivity"
             android:exported="true" />

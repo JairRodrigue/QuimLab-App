@@ -7,43 +7,63 @@
     android:layout_height="match_parent"
     tools:context=".ui.inicio.InicioFragment">
 
-
-    <TextureView
-        android:id="@+id/camera_preview"
+    <!-- ScrollView para permitir rolagem -->
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="16dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="@+id/capture_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:fillViewport="true">
 
+        <!-- Layout interno dentro do ScrollView -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:spacing="16dp">
 
-    <!-- Botão para selecionar uma foto da galeria -->
-    <Button
-        android:id="@+id/gallery_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Selecionar da Galeria"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="@color/azul_padrao"
-        android:textColor="@color/branco"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_margin="16dp" />
+            <!-- TextureView para visualização da câmera -->
+            <TextureView
+                android:id="@+id/camera_preview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
 
-    <!-- Botão para capturar foto -->
-    <Button
-        android:id="@+id/capture_button"
-        android:layout_width="0dp"
-        android:backgroundTint="@color/azul_padrao"
-        android:textColor="@color/branco"
-        android:layout_height="wrap_content"
-        android:text="Capturar Foto"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/gallery_button"
-        android:layout_margin="16dp" />
+            <Button
+                android:id="@+id/capture_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Capturar Foto"
+                android:backgroundTint="@color/azul_padrao"
+                android:textColor="@color/branco" />
 
+            <Button
+                android:layout_marginTop="10dp"
+                android:id="@+id/gallery_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/azul_padrao"
+                android:text="Selecionar da Galeria"
+                android:textColor="@color/branco" />
+            <!-- Botão para Pesquisar por palavra-chave -->
+            <Button
+                android:layout_marginTop="10dp"
+                android:id="@+id/btnPesquisar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pesquisar Informações por Palavra-chave"
+                android:backgroundTint="@color/azul_padrao"
+                android:textColor="@color/branco" />
+
+            <!-- Botão para Pesquisar por Outra Opção (Exemplo) -->
+            <Button
+                android:layout_marginTop="10dp"
+                android:id="@+id/other_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Outra Opção de Pesquisa"
+                android:backgroundTint="@color/azul_padrao"
+                android:textColor="@color/branco" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
