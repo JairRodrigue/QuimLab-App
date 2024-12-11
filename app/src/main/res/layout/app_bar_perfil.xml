@@ -21,6 +21,12 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_perfil" />
+    <LinearLayout
+        android:layout_marginTop="285dp"
+        android:layout_width="match_parent"
+        android:layout_height="350dp">
+        <include layout="@layout/item_postagem" />
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
