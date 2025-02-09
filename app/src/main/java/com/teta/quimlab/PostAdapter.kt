@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 
-class PostAdapter(private val context: Context, private var postagens: List<Map<String, Any>>) :
+open class PostAdapter(private val context: Context, private var postagens: List<Map<String, Any>>) :
     RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
     private val firestore = FirebaseFirestore.getInstance()
