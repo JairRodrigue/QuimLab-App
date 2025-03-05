@@ -104,6 +104,7 @@ open class PostAdapter(private val context: Context, private var postagens: List
             }
 
             btnLike.setOnClickListener {
+                btnLike.isEnabled = false  // Desativa o botão para evitar múltiplos cliques
                 if (isLiked) {
                     descurtirPostagem()
                 } else {
@@ -164,6 +165,9 @@ open class PostAdapter(private val context: Context, private var postagens: List
                     .addOnFailureListener { exception ->
                         Log.e("PostAdapter", "Erro ao curtir postagem: ", exception)
                     }
+                    .addOnCompleteListener {
+                        btnLike.isEnabled = true  // Reativa o botão após a conclusão
+                    }
             }
         }
 
@@ -182,6 +186,9 @@ open class PostAdapter(private val context: Context, private var postagens: List
                     }
                     .addOnFailureListener { exception ->
                         Log.e("PostAdapter", "Erro ao descurtir postagem: ", exception)
+                    }
+                    .addOnCompleteListener {
+                        btnLike.isEnabled = true  // Reativa o botão após a conclusão
                     }
             }
         }

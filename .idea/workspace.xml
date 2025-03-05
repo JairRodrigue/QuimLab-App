@@ -128,13 +128,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a72cf87-93b0-4af1-9546-c3fa44ef6ac4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/3ac51042444bb0436cf52b962b1e8b40c5e2f8a4/metadata.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/dependencies-accessors/3ac51042444bb0436cf52b962b1e8b40c5e2f8a4/metadata.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/teta/quimlab/PostAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/teta/quimlab/PostAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_perfil_publico.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_perfil_publico.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/arm64-v8a/.cmake/api/v1/reply/index-2024-12-10T22-19-02-0102.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/arm64-v8a/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/arm64-v8a/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/arm64-v8a/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/arm64-v8a/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/arm64-v8a/CMakeFiles/3.22.1-g37088a8/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/arm64-v8a/CMakeFiles/3.22.1-g37088a8/CMakeSystem.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/arm64-v8a/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/arm64-v8a/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/arm64-v8a/configure_fingerprint.bin" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/.cxx/Debug/y54b7z1k/arm64-v8a/configure_fingerprint.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/build/intermediates/cxx/Debug/y54b7z1k/logs/arm64-v8a/build_stdout_opencv_jni_shared.txt" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/intermediates/cxx/Debug/y54b7z1k/logs/arm64-v8a/build_stdout_opencv_jni_shared.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/build/intermediates/cxx/Debug/y54b7z1k/logs/arm64-v8a/metadata_generation_record.json" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/intermediates/cxx/Debug/y54b7z1k/logs/arm64-v8a/metadata_generation_record.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +151,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\alber\.android\avd\Galaxy_Nexus_API_34.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=RX8NB09FQWP)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -267,7 +274,8 @@
   </component>
   <component name="RunManager" selected="Android App.app">
     <configuration name="PerfilPublicoActivity" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
-      <module name="QuimLab.app.main" />
+      <module name="QuimLab.app" />
+      <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -275,6 +283,7 @@
       <option name="PM_INSTALL_OPTIONS" value="" />
       <option name="ALL_USERS" value="false" />
       <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="ALLOW_ASSUME_VERIFIED" value="false" />
       <option name="CLEAR_APP_STORAGE" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
@@ -327,6 +336,7 @@
         <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY" value="" />
       <option name="ACTIVITY_CLASS" value="com.teta.quimlab.PerfilPublicoActivity" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
@@ -335,7 +345,8 @@
       </method>
     </configuration>
     <configuration name="SplashActivity" type="AndroidRunConfigurationType" factoryName="Android App" temporary="true">
-      <module name="QuimLab.app.main" />
+      <module name="QuimLab.app" />
+      <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -343,6 +354,7 @@
       <option name="PM_INSTALL_OPTIONS" value="" />
       <option name="ALL_USERS" value="false" />
       <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="ALLOW_ASSUME_VERIFIED" value="false" />
       <option name="CLEAR_APP_STORAGE" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
@@ -395,6 +407,7 @@
         <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY" value="" />
       <option name="ACTIVITY_CLASS" value="com.example.neonwave.SplashActivity" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
@@ -403,7 +416,8 @@
       </method>
     </configuration>
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
-      <module name="QuimLab.app.main" />
+      <module name="QuimLab.app" />
+      <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -411,6 +425,7 @@
       <option name="PM_INSTALL_OPTIONS" value="" />
       <option name="ALL_USERS" value="false" />
       <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="ALLOW_ASSUME_VERIFIED" value="false" />
       <option name="CLEAR_APP_STORAGE" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
@@ -463,6 +478,7 @@
         <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
@@ -494,6 +510,27 @@
         <entry key="MAIN">
           <value>
             <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="play_dynamic_filters_status">
+    <option name="appIdToCheckInfo">
+      <map>
+        <entry key="com.teta.quimlab">
+          <value>
+            <CheckInfo lastCheckTimestamp="1741134451495" />
+          </value>
+        </entry>
+        <entry key="com.teta.quimlab.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1741134462866" />
+          </value>
+        </entry>
+        <entry key="com.teta.quimlab.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1741134462866" />
           </value>
         </entry>
       </map>
